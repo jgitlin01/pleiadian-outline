@@ -41,6 +41,8 @@
   --paper:    #EDE4D0;
   --paper-dim:#B0A691;
   --brass:    #C08A3E;
+  --brass-dim:rgba(192,138,62,.18);
+  --signal:   #A22211;
 
   --c-nav:   rgba(237,228,208,.86);
   --c-head1: #F6EEDC;
@@ -1138,6 +1140,106 @@ footer{padding-top:74px}
 @media(min-width:640px){ .nx-role{font-size:16px; text-align:right} }
 @media(min-width:768px){ .nx-role{font-size:18px} }
 
+
+/* ---------- HERO PURCHASE CARD (bookplate) ---------- */
+main#top{position:relative}
+
+.bookplate-wrap{
+  display:flex; justify-content:center;
+  padding:clamp(40px,7vw,72px) max(20px,5vw) clamp(8px,2vw,24px);
+  position:relative; z-index:20;
+}
+@media(min-width:1360px){
+  .bookplate-wrap{
+    position:absolute; top:96px; right:clamp(24px,4vw,60px);
+    width:400px; padding:0; display:block;
+  }
+  /* keep the centred hero copy clear of the card column */
+  .stack{ padding-right:calc(400px + 7vw); }
+}
+
+.bookplate{
+  position:relative;
+  width:100%; max-width:420px;
+  background:
+    radial-gradient(90% 70% at 50% 0%, rgba(192,138,62,.10), transparent 70%),
+    var(--ink-deep);
+  border:1px solid var(--brass);
+  border-radius:0;
+  box-shadow:inset 0 1px 0 rgba(237,228,208,.06), 0 30px 60px -30px rgba(0,0,0,.85);
+  padding:24px 26px 22px;
+  text-align:center;
+}
+
+.bp-ed{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:16px; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--brass);
+  padding-bottom:16px; border-bottom:1px solid var(--brass-dim);
+}
+
+.bp-seal{
+  width:66px; height:66px; margin:20px auto 16px;
+  border:1px solid var(--brass); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  opacity:.9;
+}
+.bp-seal svg{width:42px;height:42px;display:block}
+
+.bp-price{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:400; font-size:48px; line-height:1; color:#F6EEDC;
+}
+.bp-terms{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:16px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--paper-dim); margin-top:10px; line-height:1.5;
+}
+
+.bp-list{list-style:none; margin:22px 0 24px; text-align:left}
+.bp-list li{
+  display:flex; gap:10px; align-items:baseline;
+  font-family:'Spectral',Georgia,serif;
+  font-size:18px; line-height:1.5; font-weight:300;
+  color:var(--paper-dim);
+  padding:13px 0; border-top:1px solid var(--brass-dim);
+}
+.bp-list li:last-child{border-bottom:1px solid var(--brass-dim)}
+.bp-list li::before{content:'\00A7'; color:var(--brass); flex:none}
+
+.bp-btn{
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  width:100%; min-height:56px;
+  background:var(--signal); color:#F6EFE3;
+  text-decoration:none; border:0; border-radius:0;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:16px; letter-spacing:.24em; text-transform:uppercase;
+  transition:filter .3s ease, transform .3s ease;
+}
+.bp-btn:hover,.bp-btn:focus-visible{filter:brightness(1.15); transform:translateY(-1px)}
+.bp-btn i{position:absolute; width:8px; height:8px; pointer-events:none}
+.bp-btn i::before,.bp-btn i::after{content:''; position:absolute; background:var(--brass)}
+.bp-btn i::before{width:100%; height:1px}
+.bp-btn i::after{width:1px; height:100%}
+.bp-btn .tl{left:-5px;top:-5px}    .bp-btn .tl::before{left:0;top:0}    .bp-btn .tl::after{left:0;top:0}
+.bp-btn .tr{right:-5px;top:-5px}   .bp-btn .tr::before{right:0;top:0}   .bp-btn .tr::after{right:0;top:0}
+.bp-btn .bl{left:-5px;bottom:-5px} .bp-btn .bl::before{left:0;bottom:0} .bp-btn .bl::after{left:0;bottom:0}
+.bp-btn .br{right:-5px;bottom:-5px}.bp-btn .br::before{right:0;bottom:0}.bp-btn .br::after{right:0;bottom:0}
+
+.bp-fine{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:16px; line-height:1.7; letter-spacing:.01em;
+  color:rgba(237,228,208,.6);
+  margin-top:16px;
+}
+
+@media (prefers-reduced-motion:no-preference){
+  .bookplate.in{animation:bp-border .4s ease .2s backwards}
+  @keyframes bp-border{from{border-color:transparent}to{border-color:var(--brass)}}
+}
+
 :focus-visible{outline:2px solid rgba(192,138,62,.9);outline-offset:4px}
 </style>
 <script>
@@ -1222,6 +1324,47 @@ footer{padding-top:74px}
       <div class="pricenote">$25 once &middot; no subscription</div>
     </div>
   </section>
+
+
+  <!-- ============ HERO PURCHASE CARD ============ -->
+  <div class="bookplate-wrap">
+    <div class="bookplate reveal" role="group" aria-label="Purchase Edition VI, twenty-five dollars">
+      <div class="bp-ed">Edition VI</div>
+
+      <div class="bp-seal">
+        <svg viewBox="0 0 52 52" aria-hidden="true" fill="none">
+          <g stroke="rgba(192,138,62,.75)" stroke-width=".7" stroke-dasharray="1.6 2.4">
+            <path d="M16 17 L24 20 M24 20 L21 12 M24 20 L18 28 M18 28 L30 30 M30 30 L26 37 M30 30 L41 28 M41 28 L44 24"/>
+          </g>
+          <g fill="#EDE4D0">
+            <circle cx="21" cy="12" r="1.1"/><circle cx="16" cy="17" r="1.5"/>
+            <circle cx="24" cy="20" r="1.8"/><circle cx="18" cy="28" r="1.8"/>
+            <circle cx="30" cy="30" r="2.4"/><circle cx="26" cy="37" r="1.6"/>
+            <circle cx="41" cy="28" r="1.7"/><circle cx="44" cy="24" r="1.1"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="bp-price">$25</div>
+      <div class="bp-terms">One payment &middot; No subscription</div>
+
+      <ul class="bp-list">
+        <li>Nineteen pages, read in your browser</li>
+        <li>Every future edition included</li>
+        <li>Notice when a new edition is released</li>
+      </ul>
+
+      <a class="bp-btn" href="[CHECKOUT-URL]" data-checkout>
+        Read Edition VI
+        <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+      </a>
+
+      <div class="bp-fine">
+        Fourteen-day refund &middot; No questions<br>
+        Browser reading only &middot; No download
+      </div>
+    </div>
+  </div>
 
   <!-- ============ EQUILIBRIUM ============ -->
   <section class="eq-section" id="equilibrium">
