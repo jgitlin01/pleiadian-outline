@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0C1F">
+<title>The Pleiadian Outline — A Field Guide To A Belief With No Name</title>
+<meta name="description" content="An independent 19-page reference document mapping the Pleiadian New Age movement: its origin story, its theology, and the Gnostic cosmology underneath it. Every concept traced to its source.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Spectral:ital,wght@0,200;0,300;0,400;1,300&family=IBM+Plex+Mono:wght@300;400&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vh:100vh;
+  --s: max(calc(100vw / 1530), calc(var(--vh) / 1020));
+  --kfull: calc(var(--s) * 0.765);
+  --kfit:  calc(100vw * 0.90 / 1084);
+  --kvh:   calc(var(--vh) / 1250);
+  --k: min(var(--kfull), var(--kfit), var(--kvh));
+  --ptop: calc(var(--vh) * .4429);
+  --scene-top: clamp(calc(var(--vh) - 1024 * var(--s)),
+                     calc(var(--ptop) - 453.5 * var(--s)),
+                     0px);
+  --portal-top: calc(var(--scene-top) + 453.5 * var(--s));
+  --cta-standoff: calc(38.5 * var(--k));
+
+  --fs-nav:   max(10.8px, calc(19 * var(--k)));
+  --fs-head:  calc(88 * var(--k));
+  --fs-sub:   max(13.4px, calc(24 * var(--k)));
+  --fs-cta:   max(10.8px, calc(19 * var(--k)));
+
+  --fw-text:          400;
+  --tracking-tight:   -0.022em;
+  --tracking-mono:    0.20em;
+  --leading-display:  1.04;
+  --leading-body:     1.5;
+
+  --ink:      #0A0C1F;
+  --ink-deep: #06080F;
+  --paper:    #EDE4D0;
+  --paper-dim:#B0A691;
+  --brass:    #C08A3E;
+
+  --c-nav:   rgba(237,228,208,.86);
+  --c-head1: #F6EEDC;
+  --c-head2: rgba(192,138,62,.82);
+  --c-sub:   rgba(237,228,208,.88);
+  --c-line:  rgba(192,138,62,.85);
+  --c-glass: rgba(237,228,208,.93);
+  --c-cta-fg:#17130C;
+
+  --gap-sub:calc(14 * var(--k));
+  --gap-cta:calc(26.6 * var(--k));
+}
+@supports (height:100dvh){ :root{ --vh:100dvh; } }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink); scroll-behavior:smooth}
+body{
+  font-family:'Spectral',Georgia,serif;
+  font-weight:var(--fw-text);
+  font-synthesis:none;
+  background:var(--ink); color:var(--paper);
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+.display{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+/* paper grain over the whole page */
+.grain{
+  position:fixed; inset:0; z-index:60; pointer-events:none;
+  opacity:.14; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- HERO STAGE ---------- */
+.stage{
+  position:sticky; top:0;
+  width:100%; height:var(--vh);
+  overflow:hidden; isolation:isolate;
+  z-index:0;
+}
+.scene{
+  position:absolute; left:50%;
+  top:var(--scene-top);
+  width:calc(1536 * var(--s));
+  height:calc(1024 * var(--s));
+  transform:translateX(calc(-50% - 1.5 * var(--s)));
+  display:block; z-index:0;
+  object-fit:cover;
+  user-select:none; -webkit-user-drag:none;
+}
+.veil{
+  position:absolute; left:0; right:0; top:0;
+  height:34%;
+  background:linear-gradient(180deg,
+    rgba(6,8,15,.46) 0%, rgba(6,8,15,.26) 12%,
+    rgba(6,8,15,.10) 22%, rgba(6,8,15,0) 100%);
+  z-index:1; pointer-events:none;
+}
+.veil-b{
+  position:absolute; left:0; right:0; bottom:0;
+  height:26%;
+  background:linear-gradient(180deg, rgba(10,12,31,0), var(--ink));
+  z-index:1; pointer-events:none;
+}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed; z-index:30;
+  left:0; right:0;
+  top:max(14px, calc(58 * var(--k)));
+  display:flex; align-items:center; justify-content:center;
+  gap:calc(92 * var(--k));
+  font-size:var(--fs-nav);
+  line-height:1;
+}
+.nav a{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  color:var(--c-nav); text-decoration:none;
+  font-weight:300; letter-spacing:var(--tracking-mono);
+  text-transform:uppercase; white-space:nowrap;
+  transition:color .28s ease;
+  position:relative; padding-bottom:.42em;
+}
+.nav a::after{
+  content:''; position:absolute; left:0; right:0; bottom:0;
+  height:1px; background:var(--brass);
+  transform:scaleX(0); transform-origin:50% 50%;
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+}
+.nav a:hover,.nav a:focus-visible{color:#FFF6E4}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1)}
+
+.mark{
+  flex:none;
+  width:max(26px, calc(54 * var(--k)));
+  height:max(26px, calc(54 * var(--k)));
+  margin:0 calc(44 * var(--k));
+  display:block;
+  transition:transform .7s cubic-bezier(.4,0,.2,1), opacity .4s ease;
+}
+.mark:hover{transform:rotate(-8deg) scale(1.04)}
+.mark svg{display:block;width:100%;height:100%}
+
+.nav-links{display:contents}
+.nav-links a:nth-child(1){order:1}
+.nav-links a:nth-child(2){order:2}
+.mark{order:3}
+.nav-links a:nth-child(3){order:4}
+.nav-links a:nth-child(4){order:5}
+
+.burger{
+  order:6; display:none;
+  position:absolute; top:50%; right:6vw;
+  transform:translateY(-50%);
+  width:44px; height:44px;
+  align-items:center; justify-content:center;
+  background:none; border:0; padding:0; cursor:pointer;
+  z-index:10;
+}
+.burger span{
+  position:absolute; left:50%;
+  width:clamp(22px, 3vw, 30px); height:1.4px;
+  background:var(--c-line);
+  transform:translateX(-50%);
+  transition:transform .38s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+}
+.burger span:nth-child(1){margin-top:-4.5px}
+.burger span:nth-child(2){margin-top:4.5px}
+.nav.open .burger span:nth-child(1){transform:translateX(-50%) rotate(45deg);margin-top:0}
+.nav.open .burger span:nth-child(2){transform:translateX(-50%) rotate(-45deg);margin-top:0}
+
+/* ---------- HERO TEXT STACK ---------- */
+.stack{
+  position:absolute; z-index:3;
+  left:0; right:0;
+  bottom:calc(var(--vh) - var(--portal-top) + var(--cta-standoff));
+  display:flex; flex-direction:column; align-items:center;
+  text-align:center;
+  padding:0 4vw;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:max(9.5px, calc(15 * var(--k)));
+  letter-spacing:.30em; text-transform:uppercase;
+  color:rgba(192,138,62,.9);
+  margin-bottom:calc(26 * var(--k));
+}
+h1{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:300;
+  font-size:var(--fs-head);
+  line-height:var(--leading-display);
+  letter-spacing:var(--tracking-tight);
+  text-shadow:0 calc(2 * var(--k)) calc(38 * var(--k)) rgba(6,8,15,.55);
+}
+h1 .l1{display:block;color:var(--c-head1)}
+h1 .l2{display:block;color:var(--c-head2);font-style:italic}
+h1 .l1,h1 .l2{overflow:hidden;padding-bottom:.28em;margin-bottom:-.28em}
+h1 .l1>span,h1 .l2>span{display:block}
+
+.sub{
+  margin-top:var(--gap-sub);
+  font-size:var(--fs-sub);
+  font-weight:300;
+  line-height:var(--leading-body);
+  letter-spacing:0;
+  color:var(--c-sub);
+  max-width:min(92vw, max(calc(880 * var(--k)), 460px));
+  text-shadow:0 calc(1 * var(--k)) calc(20 * var(--k)) rgba(6,8,15,.5);
+}
+
+.cta{
+  margin-top:var(--gap-cta);
+  position:relative;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:clamp(calc(var(--fs-cta) * 7.6 + 38px),
+              calc(138 * var(--s) * 1.1228),
+              calc(var(--fs-cta) * 7.6 + 175px));
+  height:max(30px, calc(40 * var(--k)));
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:var(--fs-cta);
+  font-weight:400; letter-spacing:var(--tracking-mono);
+  text-transform:uppercase;
+  color:var(--c-cta-fg); text-decoration:none; white-space:nowrap;
+  background:var(--c-glass);
+  border:0;
+  -webkit-backdrop-filter:blur(7px) saturate(118%);
+          backdrop-filter:blur(7px) saturate(118%);
+  --brk-gap:max(3px,   calc(5 * var(--k)));
+  --brk-len:max(8px,   calc(17 * var(--k)));
+  --brk-w:  max(1px,   calc(1.4 * var(--k)));
+  transition:background .3s ease, box-shadow .35s ease, transform .35s ease;
+}
+.cta:hover,.cta:focus-visible{
+  background:#FFF6E4;
+  box-shadow:0 0 calc(38 * var(--k)) rgba(192,138,62,.42);
+  transform:translateY(calc(-1 * var(--k)));
+}
+.cta i{position:absolute;pointer-events:none;width:var(--brk-len);height:var(--brk-len)}
+.cta i::before,.cta i::after{content:'';position:absolute;background:var(--c-line)}
+.cta i::before{width:100%;height:var(--brk-w)}
+.cta i::after{width:var(--brk-w);height:100%}
+.cta .tl{left:calc(-1 * (var(--brk-gap) + var(--brk-w)));top:calc(-1 * (var(--brk-gap) + var(--brk-w)))}
+.cta .tl::before{left:0;top:0}    .cta .tl::after{left:0;top:0}
+.cta .tr{right:calc(-1 * (var(--brk-gap) + var(--brk-w)));top:calc(-1 * (var(--brk-gap) + var(--brk-w)))}
+.cta .tr::before{right:0;top:0}   .cta .tr::after{right:0;top:0}
+.cta .bl{left:calc(-1 * (var(--brk-gap) + var(--brk-w)));bottom:calc(-1 * (var(--brk-gap) + var(--brk-w)))}
+.cta .bl::before{left:0;bottom:0} .cta .bl::after{left:0;bottom:0}
+.cta .br{right:calc(-1 * (var(--brk-gap) + var(--brk-w)));bottom:calc(-1 * (var(--brk-gap) + var(--brk-w)))}
+.cta .br::before{right:0;bottom:0}.cta .br::after{right:0;bottom:0}
+
+.pricenote{
+  margin-top:calc(15 * var(--k));
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:max(9px, calc(13.5 * var(--k)));
+  letter-spacing:.22em; text-transform:uppercase;
+  color:rgba(237,228,208,.5);
+}
+
+/* ---------- DOCUMENT SECTIONS ---------- */
+.doc{
+  position:relative; z-index:10;
+  background:var(--ink);
+  padding:clamp(72px,11vw,150px) max(22px,6vw) clamp(48px,7vw,90px);
+}
+.doc-inner{max-width:1180px;margin:0 auto}
+
+.label{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10px; letter-spacing:.30em; text-transform:uppercase;
+  color:var(--brass); margin-bottom:22px;
+}
+.rule{
+  height:1px; margin:0 0 40px;
+  background:linear-gradient(90deg,rgba(192,138,62,.4),rgba(192,138,62,.06) 70%,transparent);
+}
+.h2{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:300;
+  font-size:clamp(27px,3.5vw,50px);
+  line-height:1.1; letter-spacing:-.018em;
+  color:#F6EEDC; max-width:19ch;
+}
+.lede{
+  font-size:clamp(15px,1.35vw,18px);
+  line-height:1.75; font-weight:300;
+  color:var(--paper-dim); max-width:62ch;
+}
+.split{
+  display:grid; grid-template-columns:1fr; gap:34px;
+  align-items:start;
+}
+@media(min-width:900px){
+  .split{grid-template-columns:1fr 1fr; gap:70px}
+}
+
+.pillars{
+  display:grid; grid-template-columns:1fr; gap:14px;
+  margin-top:60px;
+}
+@media(min-width:860px){.pillars{grid-template-columns:repeat(3,1fr)}}
+.pillar{
+  padding:30px 28px 32px;
+  border-radius:16px;
+  background:rgba(237,228,208,.022);
+  box-shadow:inset 0 0 0 1px rgba(192,138,62,.16);
+  display:flex; flex-direction:column; gap:16px;
+  min-height:250px;
+}
+.pillar .mk{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10px; letter-spacing:.26em; color:var(--brass);
+  text-transform:uppercase;
+}
+.pillar h3{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:300; font-size:23px; line-height:1.15;
+  color:#F6EEDC; margin-top:auto;
+}
+.pillar p{font-size:14px;line-height:1.65;font-weight:300;color:var(--paper-dim)}
+
+.toc{list-style:none;margin-top:62px}
+.toc li{
+  display:grid; gap:6px 20px;
+  grid-template-columns:auto 1fr;
+  align-items:baseline;
+  padding:19px 0;
+  border-top:1px solid rgba(192,138,62,.15);
+}
+@media(min-width:820px){
+  .toc li{grid-template-columns:62px 1fr 1.15fr auto}
+}
+.toc .mk{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px;letter-spacing:.16em;color:var(--brass)
+}
+.toc .ti{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:300;font-size:19px;color:#F6EEDC
+}
+.toc .ds{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px;font-weight:300;color:var(--paper-dim);
+  display:none
+}
+@media(min-width:820px){.toc .ds{display:block}}
+.toc .pp{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(176,166,145,.6)
+}
+
+.method{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:300;
+  font-size:clamp(22px,3.1vw,44px);
+  line-height:1.22; letter-spacing:-.015em;
+  color:#F6EEDC; max-width:26ch;
+}
+.method em{font-style:italic;color:var(--brass)}
+
+.stats{
+  display:grid;grid-template-columns:1fr;gap:26px;
+  margin-top:64px
+}
+@media(min-width:760px){.stats{grid-template-columns:repeat(3,1fr);gap:44px}}
+.stat{position:relative;padding:30px 26px}
+.stat::before,.stat::after,
+.stat>i::before,.stat>i::after{
+  content:'';position:absolute;width:17px;height:17px;
+  border:1.5px solid rgba(192,138,62,.5)
+}
+.stat::before{left:0;top:0;border-right:0;border-bottom:0;border-radius:4px 0 0 0}
+.stat::after{right:0;top:0;border-left:0;border-bottom:0;border-radius:0 4px 0 0}
+.stat>i::before{left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 4px}
+.stat>i::after{right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 4px 0}
+.stat .n{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10px;letter-spacing:.24em;color:var(--brass);margin-bottom:20px
+}
+.stat .v{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:300;font-size:clamp(38px,4.4vw,54px);
+  line-height:1;color:#F6EEDC;margin-bottom:12px
+}
+.stat .l{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  line-height:1.7;color:var(--paper-dim)
+}
+
+.sources{font-size:clamp(14.5px,1.3vw,17px);line-height:2;font-weight:300;color:var(--paper-dim);max-width:82ch}
+.sources em{color:#F6EEDC;font-style:italic}
+
+.faq{display:grid;grid-template-columns:1fr;gap:34px 56px;margin-top:8px}
+@media(min-width:840px){.faq{grid-template-columns:1fr 1fr}}
+.faq h4{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:300;font-size:20px;color:#F6EEDC;margin-bottom:11px
+}
+.faq p{font-size:14.5px;line-height:1.72;font-weight:300;color:var(--paper-dim)}
+
+.buy{
+  margin-top:20px;
+  border-radius:22px;
+  padding:clamp(46px,6vw,80px) max(24px,5vw);
+  text-align:center;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(192,138,62,.10) 0%, transparent 62%),
+    rgba(237,228,208,.018);
+  box-shadow:inset 0 0 0 1px rgba(192,138,62,.22);
+}
+.buy .h2{margin:0 auto 18px;max-width:22ch}
+.buy p{
+  font-size:14.5px;line-height:1.7;font-weight:300;
+  color:var(--paper-dim);max-width:52ch;margin:0 auto 34px
+}
+.buy-btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  gap:10px;padding:16px 42px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px;letter-spacing:.20em;text-transform:uppercase;
+  color:#17130C;background:var(--paper);text-decoration:none;
+  border-radius:999px;
+  transition:background .3s ease, box-shadow .35s ease, transform .3s ease;
+}
+.buy-btn:hover,.buy-btn:focus-visible{
+  background:var(--brass);color:#0B0906;
+  box-shadow:0 0 40px rgba(192,138,62,.35);
+  transform:translateY(-1px)
+}
+
+footer{padding-top:74px}
+.legal{
+  display:grid;grid-template-columns:1fr;gap:28px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace
+}
+@media(min-width:860px){.legal{grid-template-columns:1.7fr 1fr;gap:56px}}
+.legal p{font-size:10.5px;line-height:2;color:rgba(176,166,145,.62)}
+.legal nav{display:flex;flex-direction:column;gap:12px}
+.legal nav a{
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--paper-dim);text-decoration:none;transition:color .25s
+}
+.legal nav a:hover{color:#F6EEDC}
+.copy{
+  margin-top:44px;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(176,166,145,.42)
+}
+
+/* ---------- RESPONSIVE (from template, retuned) ---------- */
+@media (max-width:1080px) and (max-aspect-ratio:0.91/1),
+       (max-width:620px) and (min-height:480px){
+  :root{
+    --fs-sub: clamp(13.4px, 2.2vw, 22px);
+    --fs-cta: clamp(11.4px, 1.9vw, 19px);
+    --gap-sub: clamp(8px,  1.9vw, 22px);
+    --gap-cta: clamp(16px, 3.2vw, 34px);
+    --nav-top:      max(16px, min(3.2vw, calc(58 * var(--k))));
+    --mark-size:    clamp(28px, 4.8vw, 48px);
+    --nav-zone:     calc(var(--nav-top) + var(--mark-size));
+    --cta-standoff: clamp(22px, 3.4vh, 48px);
+  }
+  h1{ font-size:clamp(25px, 7.4vw, 78px); }
+  .stack{
+    top:calc(var(--nav-zone) + clamp(18px, 3.2vh, 44px));
+    bottom:auto;
+    justify-content:center;
+    padding:0 8vw;
+  }
+  .sub{ max-width:min(84vw, 58ch); line-height:1.55; text-wrap:balance; }
+  .sub br.brk{display:none}
+  .nav{ gap:0; padding:0 6vw; top:var(--nav-top); }
+  .mark{ margin:0; order:0; width:var(--mark-size); height:var(--mark-size); }
+  .burger{ display:flex; }
+  .nav-links{
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:clamp(20px, 3.6vw, 38px);
+    position:fixed; inset:0; z-index:9;
+    background:rgba(6,8,15,.72);
+    -webkit-backdrop-filter:blur(26px) saturate(120%);
+            backdrop-filter:blur(26px) saturate(120%);
+    opacity:0; visibility:hidden;
+    transition:opacity .38s cubic-bezier(.4,0,.2,1), visibility 0s linear .38s;
+  }
+  .nav.open .nav-links{
+    opacity:1; visibility:visible;
+    transition:opacity .38s cubic-bezier(.4,0,.2,1), visibility 0s;
+  }
+  .ent .nav-links a{animation:none}
+  .nav-links a{
+    font-size:clamp(15px, 2.6vw, 21px);
+    padding-bottom:.28em;
+    opacity:0; transform:translateY(calc(14 * var(--k)));
+    transition:opacity .001s, transform .001s;
+  }
+  .nav.open .nav-links a{
+    opacity:1; transform:none;
+    transition:opacity .42s cubic-bezier(.22,.61,.36,1),
+               transform .42s cubic-bezier(.22,.61,.36,1);
+  }
+  .nav.open .nav-links a:nth-child(1){transition-delay:.06s}
+  .nav.open .nav-links a:nth-child(2){transition-delay:.12s}
+  .nav.open .nav-links a:nth-child(3){transition-delay:.18s}
+  .nav.open .nav-links a:nth-child(4){transition-delay:.24s}
+  .cta::after{
+    content:''; position:absolute; left:0; right:0; top:50%;
+    height:max(100%, 44px); transform:translateY(-50%);
+  }
+}
+
+@media (max-width:500px) and (min-height:480px){
+  :root{
+    --fs-sub:  clamp(13.4px, min(4.2vw, 2.2vh), 18px);
+    --fs-cta:  clamp(12px,   min(3.8vw, 2.1vh), 16px);
+    --gap-sub: clamp(9px,  1.7vh, 20px);
+    --gap-cta: clamp(14px, 2.6vh, 30px);
+    --s: max(calc(100vw / 1530), calc(var(--vh) / 1006));
+    --nav-top:      clamp(14px, 2.2vh, 26px);
+    --mark-size:    clamp(28px, 7.4vw, 38px);
+    --nav-zone:     calc(var(--nav-top) + var(--mark-size));
+    --cta-standoff: clamp(18px, 3.2vh, 40px);
+  }
+  h1{ font-size:clamp(25px, min(8.6vw, 4vh), 44px); text-wrap:balance; }
+  .stack{ top:calc(var(--nav-zone) + clamp(14px, 2.6vh, 34px)); padding:0 max(20px, 6vw); }
+  .sub{ max-width:min(100%, 36ch); line-height:1.58; }
+  .sub br.brk{ display:none; }
+  .nav{ top:var(--nav-top); padding:0 max(18px, 5vw); }
+  .mark{ width:var(--mark-size); height:var(--mark-size); }
+  .burger{ right:max(18px, 5vw); }
+  .nav-links{ gap:clamp(14px, 3.2vh, 26px); }
+  .nav-links a{ font-size:clamp(15px, 4.4vw, 20px); padding:.2em .5em .34em; }
+}
+
+@media (max-width:1080px) and (max-aspect-ratio:0.91/1) and (max-height:520px),
+       (max-width:620px) and (min-height:480px) and (max-height:520px){
+  .nav{top:10px}
+}
+@media (max-height:620px){
+  :root{ --ptop: max(calc(var(--vh) * .4429), calc(500 * var(--k) + 78px)); }
+}
+
+/* ---------- ENTRANCE ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .ent .mark{animation:entMark .70s cubic-bezier(.16,1,.3,1) .10s backwards}
+  @keyframes entMark{from{opacity:0;transform:scale(.9) rotate(-14deg)}to{opacity:1;transform:none}}
+  .ent .nav-links a{animation:entRise .55s cubic-bezier(.22,.61,.36,1) backwards}
+  .ent .nav-links a:nth-child(2),.ent .nav-links a:nth-child(3){animation-delay:.20s}
+  .ent .nav-links a:nth-child(1),.ent .nav-links a:nth-child(4){animation-delay:.26s}
+  .ent .burger{animation:entFade .55s cubic-bezier(.22,.61,.36,1) .20s backwards}
+  .ent .eyebrow{animation:entFade .8s ease .22s backwards}
+  .ent h1 .l1>span{animation:entLine .95s cubic-bezier(.16,1,.3,1) .32s backwards}
+  .ent h1 .l2>span{animation:entLine .95s cubic-bezier(.16,1,.3,1) .44s backwards}
+  @keyframes entLine{from{transform:translateY(116%)}to{transform:none}}
+  .ent .sub{animation:entRise .62s cubic-bezier(.22,.61,.36,1) .68s backwards}
+  .ent .cta i{animation:entCorner .50s cubic-bezier(.16,1,.3,1) .84s backwards}
+  .ent .cta .tl{--ex:6px;--ey:6px}  .ent .cta .tr{--ex:-6px;--ey:6px}
+  .ent .cta .bl{--ex:6px;--ey:-6px} .ent .cta .br{--ex:-6px;--ey:-6px}
+  @keyframes entCorner{from{opacity:0;transform:translate(var(--ex),var(--ey))}to{opacity:1;transform:none}}
+  .ent .cta{animation:entPanel .65s cubic-bezier(.16,1,.3,1) .92s backwards}
+  .ent .pricenote{animation:entFade .7s ease 1.1s backwards}
+  @keyframes entPanel{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+  @keyframes entRise{from{opacity:0;transform:translateY(calc(9 * var(--k)))}to{opacity:1;transform:none}}
+  @keyframes entFade{from{opacity:0}to{opacity:1}}
+
+  .reveal{opacity:0;transform:translateY(20px);
+    transition:opacity .85s cubic-bezier(.22,.61,.36,1), transform .85s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  .reveal{opacity:1;transform:none}
+}
+
+
+/* ================= EQUILIBRIUM PANEL (liquid glass) ================= */
+.eq-section{
+  position:relative; z-index:10;
+  width:100%; height:var(--vh);
+  overflow:hidden;
+  background:var(--ink);
+}
+/* Geist is scoped to this panel so it does not clobber the document type */
+.eq-section, .eq-section *{
+  font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+.eq-video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:0;
+  user-select:none; -webkit-user-drag:none;
+}
+
+.liquid-glass{
+  background:rgba(255,255,255,0.01);
+  background-blend-mode:luminosity;
+  -webkit-backdrop-filter:blur(4px);
+          backdrop-filter:blur(4px);
+  border:none;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.1);
+  position:relative; overflow:hidden;
+}
+.liquid-glass::before{
+  content:''; position:absolute; inset:0;
+  border-radius:inherit; padding:1.4px;
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%,
+    rgba(255,255,255,0.45) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  pointer-events:none;
+}
+
+/* --- buttons --- */
+.eq-btn{
+  font-size:14px; font-weight:500; line-height:1.2;
+  padding:10px 16px; border-radius:9999px;
+  border:0; cursor:pointer;
+  transition:background-color .2s ease, color .2s ease;
+}
+.eq-btn-ghost{color:#fff}
+.eq-btn-ghost:hover{background:rgba(255,255,255,.05)}
+.eq-btn-solid{background:#fff; color:#000}
+.eq-btn-solid:hover{background:rgba(255,255,255,.9)}
+
+/* --- hero copy --- */
+.eq-hero{
+  position:absolute; bottom:0; left:0; z-index:20;
+  padding:0 24px 40px;
+  max-width:42rem;
+}
+@media(min-width:640px){ .eq-hero{padding:0 48px 64px} }
+.eq-hero h2{
+  color:#fff;
+  font-size:36px; font-weight:500;
+  line-height:1.25; letter-spacing:-.025em;
+  margin-bottom:16px;
+}
+@media(min-width:640px){ .eq-hero h2{font-size:48px} }
+@media(min-width:1024px){ .eq-hero h2{font-size:60px} }
+.eq-hero p{
+  color:rgba(255,255,255,.6);
+  font-size:14px; line-height:1.625;
+  margin-bottom:28px; max-width:28rem;
+}
+.eq-hero-btns{display:flex; flex-wrap:wrap; align-items:center; gap:12px}
+.eq-hero-btns .eq-btn{font-size:14px; padding:12px 24px}
+@media(min-width:640px){ .eq-hero-btns .eq-btn{font-size:16px; padding:12px 28px} }
+
+
+/* ================= PROJECTS (sticky stacking cards) ================= */
+.pj-section{
+  position:relative; z-index:10;
+  background:var(--ink);
+  padding:0 20px;
+  border-radius:40px 40px 0 0;
+  margin-top:-40px;
+}
+@media(min-width:640px){
+  .pj-section{padding:0 32px; border-radius:50px 50px 0 0; margin-top:-48px}
+}
+@media(min-width:768px){
+  .pj-section{padding:0 40px; border-radius:60px 60px 0 0; margin-top:-56px}
+}
+
+.pj-head{
+  display:flex; flex-direction:column; align-items:center;
+  padding:80px 0;
+}
+@media(min-width:640px){ .pj-head{padding:96px 0} }
+@media(min-width:768px){ .pj-head{padding:128px 0} }
+.pj-head h2{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:900;
+  font-size:clamp(3rem, 12vw, 160px);
+  line-height:1; letter-spacing:-.03em;
+  text-transform:uppercase; text-align:center; width:100%;
+  background:linear-gradient(180deg, var(--brass) 0%, #F6EEDC 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+
+/* --- sticky wrapper --- */
+.pj-sticky{ margin-bottom:24px; }
+.pj-sticky .pj-card{ position:static; top:auto !important; transform:none !important; }
+@media(min-width:768px){
+  .pj-sticky{
+    height:88vh; margin-bottom:0;
+    display:flex; align-items:flex-start; justify-content:center;
+    position:sticky; top:32px;
+  }
+  .pj-sticky .pj-card{ position:absolute; }
+}
+
+.pj-card{
+  position:absolute;
+  width:100%; max-width:1760px;
+  transform-origin:top;
+  background:var(--ink);
+  border:2px solid rgba(192,138,62,.5);
+  border-radius:40px;
+  padding:16px;
+  display:flex; flex-direction:column; gap:24px;
+}
+@media(min-width:640px){ .pj-card{border-radius:50px; padding:24px; gap:32px} }
+@media(min-width:768px){ .pj-card{border-radius:60px; padding:32px; gap:40px} }
+
+/* --- card header --- */
+.pj-top{
+  display:flex; flex-direction:column; gap:24px;
+}
+@media(min-width:640px){
+  .pj-top{flex-direction:row; align-items:center; justify-content:space-between; gap:16px}
+}
+.pj-left{display:flex; align-items:center; gap:24px}
+@media(min-width:640px){ .pj-left{gap:32px} }
+@media(min-width:768px){ .pj-left{gap:40px} }
+.pj-num{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:900;
+  color:var(--paper);
+  font-size:clamp(3rem, 10vw, 140px);
+  line-height:1; text-transform:uppercase;
+}
+.pj-meta{display:flex; flex-direction:column; gap:8px}
+@media(min-width:640px){ .pj-meta{gap:16px} }
+@media(min-width:768px){ .pj-meta{gap:24px} }
+.pj-cat{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-weight:400; text-transform:uppercase;
+  letter-spacing:.18em;
+  color:var(--brass);
+  font-size:clamp(.8rem, 2.2vw, 1.5rem);
+}
+.pj-name{
+  font-family:'Spectral',Georgia,serif;
+  font-weight:300; letter-spacing:.02em;
+  color:var(--paper);
+  font-size:clamp(.9rem, 2vw, 2rem);
+}
+.pj-live{
+  display:inline-flex; align-items:center; justify-content:center;
+  align-self:flex-start;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:14px; font-weight:400;
+  text-transform:uppercase; letter-spacing:.2em;
+  color:var(--paper); text-decoration:none; white-space:nowrap;
+  background:transparent;
+  border:2px solid rgba(192,138,62,.5);
+  border-radius:9999px;
+  padding:12px 32px;
+  transition:background-color .2s ease, border-color .2s ease;
+}
+@media(min-width:640px){ .pj-live{font-size:16px; padding:14px 40px} }
+.pj-live:hover{background:rgba(237,228,208,.10); border-color:var(--brass)}
+.pj-live:active{background:rgba(237,228,208,.20)}
+
+/* --- image grid --- */
+.pj-grid{display:flex; flex-direction:column; gap:16px; width:100%}
+@media(min-width:768px){ .pj-grid{flex-direction:row; gap:20px} }
+.pj-col1{display:flex; flex-direction:column; gap:16px; width:100%}
+@media(min-width:768px){ .pj-col1{gap:20px; width:40%} }
+.pj-col1 img{width:100%; object-fit:cover; display:block}
+.pj-col1 img:nth-child(1){height:min(clamp(130px, 16vw, 230px), 20vh); border-radius:40px}
+.pj-col1 img:nth-child(2){height:min(clamp(160px, 22vw, 340px), 28vh); border-radius:30px}
+@media(min-width:640px){
+  .pj-col1 img:nth-child(1){border-radius:50px}
+  .pj-col1 img:nth-child(2){border-radius:40px}
+}
+@media(min-width:768px){
+  .pj-col1 img:nth-child(1){border-radius:60px}
+  .pj-col1 img:nth-child(2){border-radius:60px}
+}
+.pj-col2{display:flex; width:100%}
+@media(min-width:768px){ .pj-col2{width:60%} }
+.pj-col2 img{
+  width:100%; object-fit:cover; display:block;
+  align-self:stretch;
+  border-radius:30px;
+  min-height:clamp(200px, 30vw, 400px);
+}
+@media(min-width:640px){ .pj-col2 img{border-radius:40px} }
+@media(min-width:768px){ .pj-col2 img{border-radius:60px; min-height:0} }
+
+
+/* ================= MENTALITY HERO ================= */
+.mh-section{
+  position:relative; z-index:10;
+  width:100%;
+  min-height:110vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  overflow:hidden;
+  background:var(--ink);
+}
+@media(min-width:640px){ .mh-section{min-height:140vh} }
+.mh-section ::selection{background:rgba(192,138,62,.45); color:#FFF6E4}
+
+/* --- background video + blend mask --- */
+.mh-videowrap{
+  position:absolute; top:15vh; left:0;
+  width:100%; height:95vh;
+  z-index:0; pointer-events:none;
+}
+@media(min-width:640px){ .mh-videowrap{top:20vh; height:120vh} }
+.mh-videowrap video{
+  width:100%; height:100%; object-fit:cover; opacity:1; display:block;
+}
+/* the source video is near-white; this scrim seats it in the page's dark register
+   and keeps the cream type legible over it */
+.mh-videowrap::after{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(10,12,31,.80) 0%,
+    rgba(10,12,31,.58) 40%,
+    rgba(10,12,31,.62) 70%,
+    rgba(10,12,31,.90) 93%,
+    rgba(10,12,31,1) 100%);
+}
+.mh-mask{
+  position:absolute; top:0; left:0;
+  width:100%; height:96px;
+  background:linear-gradient(180deg, var(--ink) 0%, rgba(10,12,31,0) 100%);
+}
+@media(min-width:640px){ .mh-mask{height:128px} }
+
+/* --- content grid --- */
+.mh-inner{
+  max-width:80rem; width:100%; margin:0 auto;
+  padding:0 32px;
+  position:relative; z-index:10;
+  display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); column-gap:16px;
+}
+@media(min-width:768px){ .mh-inner{padding:0 64px; column-gap:32px} }
+@media(min-width:1024px){ .mh-inner{padding:0 80px} }
+.mh-col{grid-column:span 12}
+@media(min-width:768px){ .mh-col{grid-column:2 / span 10} }
+
+.mh-title{
+  font-family:'Fraunces',Georgia,serif;
+  font-variation-settings:'SOFT' 0,'WONK' 1;
+  font-weight:300;
+  font-size:clamp(1.9rem, 5.2vw, 4.6rem);
+  line-height:1.16; letter-spacing:-.022em;
+  color:var(--paper-dim);
+  margin:0 0 clamp(24px, 3vw, 44px);
+  padding-top:clamp(80px, 12vh, 170px);
+}
+.mh-title .lead{color:var(--paper)}
+
+/* the pill "eye" between words */
+.mh-eye{
+  width:16px; height:.62em;
+  border:2px solid var(--paper);
+  border-radius:9999px;
+  display:inline-flex; align-items:center; justify-content:center;
+  vertical-align:middle;
+  margin:0 .12em;
+}
+@media(min-width:768px){ .mh-eye{width:42px} }
+@media(min-width:1024px){ .mh-eye{width:62px} }
+.mh-eye span{
+  width:8px; height:8px; border-radius:9999px;
+  background:var(--paper); display:block;
+}
+
+/* --- search capsule --- */
+.mh-search{
+  background:rgba(237,228,208,.05);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border-radius:6px;
+  border:1px solid rgba(192,138,62,.22);
+  padding:4px 4px 4px 16px;
+  display:flex; align-items:center; gap:12px;
+  max-width:420px;
+  box-shadow:0 1px 2px rgba(6,8,15,.45);
+}
+.mh-search input{
+  flex:1 1 auto; min-width:0;
+  background:transparent; border:0; outline:none;
+  font-family:'Spectral',Georgia,serif;
+  font-size:15px; font-weight:300;
+  color:var(--paper);
+}
+.mh-search input::placeholder{color:var(--paper-dim); opacity:.8}
+.mh-search button{
+  flex:none;
+  width:36px; height:36px; border-radius:9999px;
+  background:var(--paper); color:#17130C;
+  border:0; cursor:pointer; position:relative;
+  display:inline-flex; align-items:center; justify-content:center;
+  transition:background-color .25s ease;
+}
+.mh-search button:hover{background:var(--brass); color:#0B0906}
+
+/* --- edge anchors --- */
+.mh-lang{
+  position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  z-index:20;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--paper);
+  background:rgba(237,228,208,.06);
+  -webkit-backdrop-filter:blur(10px) saturate(120%);
+          backdrop-filter:blur(10px) saturate(120%);
+  border:1px solid rgba(192,138,62,.25);
+  border-radius:9999px;
+  padding:8px 14px;
+}
+@media(min-width:768px){ .mh-lang{right:28px} }
+.mh-corner{
+  position:absolute; bottom:20px; z-index:20;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+  color:rgba(176,166,145,.75);
+}
+.mh-corner.left{left:24px}
+.mh-corner.right{right:24px}
+@media(min-width:768px){
+  .mh-corner{bottom:28px}
+  .mh-corner.left{left:40px}
+  .mh-corner.right{right:40px}
+}
+
+
+/* ================= NEXFORMO ================= */
+.nx-section{
+  position:relative; z-index:10;
+  height:var(--vh); width:100%;
+  overflow:hidden;
+  background:var(--ink);
+  font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+.nx-section *{font-family:inherit}
+.nx-video{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+  z-index:0;
+}
+.nx-layer{
+  position:relative; z-index:10;
+  display:flex; flex-direction:column;
+  height:100%;
+  padding:0 20px;
+}
+@media(min-width:640px){ .nx-layer{padding:0 32px} }
+@media(min-width:768px){ .nx-layer{padding:0 48px} }
+@media(min-width:1024px){ .nx-layer{padding:0 64px} }
+
+/* --- main row --- */
+.nx-main{flex:1 1 auto; display:flex; align-items:center; min-height:0}
+.nx-row{
+  width:100%;
+  display:flex; align-items:flex-start; justify-content:center;
+  padding:0 4px;
+}
+@media(min-width:768px){ .nx-row{justify-content:flex-end; margin-right:64px; padding:0} }
+@media(min-width:1024px){ .nx-row{margin-right:96px} }
+
+/* --- rotating badge --- */
+.nx-badge{display:none}
+@media(min-width:768px){
+  .nx-badge{
+    display:flex; align-items:flex-start;
+    margin-right:24px; margin-top:-32px; flex:none;
+    position:relative; width:96px; height:96px;
+  }
+}
+@media(min-width:1024px){ .nx-badge{margin-right:40px; width:112px; height:112px} }
+.nx-badge-bg{
+  position:absolute; inset:0; border-radius:9999px;
+  background:rgba(237,228,208,.10);
+  -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+}
+.nx-badge svg{position:absolute; inset:0; width:100%; height:100%}
+@keyframes nx-spin{to{transform:rotate(360deg)}}
+.nx-spin{animation:nx-spin 20s linear infinite; transform-origin:50% 50%}
+@media(prefers-reduced-motion:reduce){ .nx-spin{animation:none} }
+
+/* --- carousel --- */
+.nx-copy{max-width:42rem; position:relative}
+.nx-slide{
+  transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+  opacity:0; transform:translateY(16px);
+  position:absolute; inset:0; pointer-events:none;
+}
+.nx-slide.is-active{opacity:1; transform:none; position:relative; pointer-events:auto}
+.nx-slide h3{
+  color:var(--paper);
+  font-size:20px; font-weight:300;
+  line-height:1.45; letter-spacing:-.025em;
+}
+@media(min-width:640px){ .nx-slide h3{font-size:24px} }
+@media(min-width:768px){ .nx-slide h3{font-size:30px} }
+@media(min-width:1024px){ .nx-slide h3{font-size:2.1rem} }
+.nx-slide h3 em{
+  font-style:normal;
+  text-decoration:underline; text-underline-offset:4px;
+  text-decoration-color:var(--brass);
+}
+.nx-cta{
+  display:inline-block; margin-top:24px;
+  color:var(--paper); text-decoration:none;
+  font-size:12px; font-weight:300; letter-spacing:.025em;
+  transition:opacity .3s ease;
+}
+@media(min-width:640px){ .nx-cta{margin-top:32px; font-size:14px} }
+.nx-cta:hover{opacity:.7}
+
+/* --- dots --- */
+.nx-dots{display:flex; align-items:center; gap:8px; margin-top:32px}
+@media(min-width:640px){ .nx-dots{margin-top:40px} }
+.nx-dots button{
+  width:6px; height:6px; border-radius:9999px;
+  border:0; padding:0; cursor:pointer;
+  background:rgba(237,228,208,.4); transform:scale(.9);
+  transition:background-color .5s ease, transform .5s ease;
+}
+@media(min-width:640px){ .nx-dots button{width:8px; height:8px} }
+.nx-dots button:hover{background:rgba(237,228,208,.6)}
+.nx-dots button.is-active{background:var(--paper); transform:scale(1)}
+
+/* --- bottom --- */
+.nx-bottom{padding-bottom:20px; flex:none}
+@media(min-width:640px){ .nx-bottom{padding-bottom:32px} }
+.nx-marks{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:12px;
+}
+@media(min-width:640px){ .nx-marks{margin-bottom:16px} }
+.nx-marks span{
+  color:rgba(237,228,208,.5);
+  font-size:10px; font-weight:300;
+}
+@media(min-width:640px){ .nx-marks span{font-size:12px} }
+.nx-foot{
+  display:flex; flex-direction:column; gap:16px;
+  border-top:1px solid rgba(192,138,62,.18);
+  padding-top:16px;
+}
+@media(min-width:640px){
+  .nx-foot{flex-direction:row; align-items:flex-end; justify-content:space-between; gap:0}
+}
+.nx-foot p{
+  color:rgba(237,228,208,.45);
+  font-size:9px; font-weight:300; line-height:1.625;
+  max-width:28rem;
+}
+@media(min-width:640px){ .nx-foot p{font-size:10px} }
+@media(min-width:768px){ .nx-foot p{font-size:12px} }
+.nx-foot p u{
+  text-decoration:underline; text-underline-offset:2px;
+  text-decoration-color:rgba(192,138,62,.45);
+}
+.nx-foot p br{display:none}
+@media(min-width:640px){ .nx-foot p br{display:inline} }
+.nx-role{
+  color:rgba(237,228,208,.45);
+  font-size:9px; font-weight:300;
+  text-transform:uppercase; letter-spacing:.05em;
+}
+@media(min-width:640px){ .nx-role{font-size:10px; text-align:right} }
+@media(min-width:768px){ .nx-role{font-size:12px} }
+
+:focus-visible{outline:2px solid rgba(192,138,62,.9);outline-offset:4px}
+</style>
+<script>
+(function () {
+  var d = document.documentElement;
+  try { if (matchMedia('(prefers-reduced-motion:reduce)').matches) return; } catch (e) {}
+  d.classList.add('ent');
+  var done = function () {
+    if (!d.classList.contains('ent')) return;
+    d.classList.remove('ent');
+    var c = document.querySelector('.cta');
+    if (c) { c.style.display = 'none'; void c.offsetHeight; c.style.display = ''; }
+  };
+  addEventListener('animationend', function (e) {
+    if (e.animationName === 'entPanel') done();
+  });
+  setTimeout(done, 2600);
+})();
+</script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-links" id="primary-menu">
+    <a href="#contents">Contents</a>
+    <a href="#method">Method</a>
+    <a href="#sources">Sources</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#top" class="mark" aria-label="Home">
+    <svg viewBox="0 0 52 52" role="img" aria-label="Pleiades cluster mark" fill="none">
+      <g stroke="rgba(192,138,62,.75)" stroke-width=".7" stroke-dasharray="1.6 2.4">
+        <path d="M16 17 L24 20 M24 20 L21 12 M24 20 L18 28 M18 28 L30 30 M30 30 L26 37 M30 30 L41 28 M41 28 L44 24"/>
+      </g>
+      <g fill="#EDE4D0">
+        <circle cx="21" cy="12" r="1.1"/><circle cx="16" cy="17" r="1.5"/>
+        <circle cx="24" cy="20" r="1.8"/><circle cx="18" cy="28" r="1.8"/>
+        <circle cx="30" cy="30" r="2.4"/><circle cx="26" cy="37" r="1.6"/>
+        <circle cx="41" cy="28" r="1.7"/><circle cx="44" cy="24" r="1.1"/>
+      </g>
+      <g fill="rgba(237,228,208,.13)">
+        <circle cx="30" cy="30" r="6"/><circle cx="24" cy="20" r="4.4"/>
+        <circle cx="18" cy="28" r="4.4"/>
+      </g>
+    </svg>
+  </a>
+  <button class="burger" type="button" aria-label="Open menu"
+          aria-expanded="false" aria-controls="primary-menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<main id="top">
+  <section class="stage">
+    <video class="scene" autoplay muted loop playsinline
+           poster="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/dd434947-66e8-4157-9a51-e69b6fab4913.webp"
+           aria-label="A luminous rectangular portal standing in a mossy valley at twilight, ringed by snow-dusted mountains and mirrored in shallow water.">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_124917_8316313b-031e-44c7-90fa-d660944081e1.mp4" type="video/mp4">
+    </video>
+    <div class="veil"></div>
+    <div class="veil-b"></div>
+
+    <div class="stack">
+      <div class="eyebrow">Independent reference &middot; Edition VI</div>
+      <h1>
+        <span class="l1"><span>A Field Guide To A</span></span>
+        <span class="l2"><span>Belief With No Name</span></span>
+      </h1>
+      <p class="sub">Nineteen pages mapping the Pleiadian New Age movement — its origin story, its <br class="brk">theology, and the Gnostic cosmology underneath it. Every concept traced to the book, author and year it came from.</p>
+      <a class="cta" href="#get">
+        <span>read the outline</span>
+        <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+      </a>
+      <div class="pricenote">$25 once &middot; no subscription</div>
+    </div>
+  </section>
+
+  <!-- ============ EQUILIBRIUM ============ -->
+  <section class="eq-section" id="equilibrium">
+    <video class="eq-video" autoplay muted loop playsinline
+           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4"
+           aria-label="Looping ambient background video."></video>
+
+    <div class="eq-hero">
+      <h2>Live Better, Feel Whole Every Day</h2>
+      <p>Take charge of how you feel with a companion built for your journey&mdash;build routines, follow your growth, and unlock tailored insights for a steadier, more vibrant life each day.</p>
+      <div class="eq-hero-btns">
+        <button type="button" class="eq-btn eq-btn-solid">Start Today</button>
+        <button type="button" class="eq-btn eq-btn-ghost liquid-glass">Discover How</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="pj-section" id="projects">
+    <div class="pj-head">
+      <h2 class="reveal">Project</h2>
+    </div>
+    <div id="pj-stack">
+      <div class="pj-sticky">
+        <article class="pj-card" data-pj-card style="top:0px">
+          <div class="pj-top">
+            <div class="pj-left">
+              <div class="pj-num">01</div>
+              <div class="pj-meta">
+                <div class="pj-cat">Client</div>
+                <div class="pj-name">Nextlevel Studio</div>
+              </div>
+            </div>
+            <a class="pj-live" href="#" target="_blank" rel="noopener noreferrer">Live Project</a>
+          </div>
+          <div class="pj-grid">
+            <div class="pj-col1">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&amp;w=1280&amp;q=85" alt="Nextlevel Studio project image one" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&amp;w=1280&amp;q=85" alt="Nextlevel Studio project image two" loading="lazy" decoding="async">
+            </div>
+            <div class="pj-col2">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&amp;w=1280&amp;q=85" alt="Nextlevel Studio project image three" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="pj-sticky">
+        <article class="pj-card" data-pj-card style="top:28px">
+          <div class="pj-top">
+            <div class="pj-left">
+              <div class="pj-num">02</div>
+              <div class="pj-meta">
+                <div class="pj-cat">Personal</div>
+                <div class="pj-name">Aura Brand Identity</div>
+              </div>
+            </div>
+            <a class="pj-live" href="#" target="_blank" rel="noopener noreferrer">Live Project</a>
+          </div>
+          <div class="pj-grid">
+            <div class="pj-col1">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&amp;w=1280&amp;q=85" alt="Aura Brand Identity project image one" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&amp;w=1280&amp;q=85" alt="Aura Brand Identity project image two" loading="lazy" decoding="async">
+            </div>
+            <div class="pj-col2">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&amp;w=1280&amp;q=85" alt="Aura Brand Identity project image three" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="pj-sticky">
+        <article class="pj-card" data-pj-card style="top:56px">
+          <div class="pj-top">
+            <div class="pj-left">
+              <div class="pj-num">03</div>
+              <div class="pj-meta">
+                <div class="pj-cat">Client</div>
+                <div class="pj-name">Solaris Digital</div>
+              </div>
+            </div>
+            <a class="pj-live" href="#" target="_blank" rel="noopener noreferrer">Live Project</a>
+          </div>
+          <div class="pj-grid">
+            <div class="pj-col1">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&amp;w=1280&amp;q=85" alt="Solaris Digital project image one" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&amp;w=1280&amp;q=85" alt="Solaris Digital project image two" loading="lazy" decoding="async">
+            </div>
+            <div class="pj-col2">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&amp;w=1280&amp;q=85" alt="Solaris Digital project image three" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENTALITY ============ -->
+  <section class="mh-section" id="mentality">
+    <div class="mh-videowrap">
+      <video autoplay loop muted playsinline
+             src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4"
+             aria-label="Ambient background video."></video>
+      <div class="mh-mask"></div>
+    </div>
+
+    <div class="mh-inner">
+      <div class="mh-col">
+        <h2 class="mh-title reveal">
+          <span class="lead">Remix: Mentality offers</span> information<br>
+          and resources to help you manage<br>
+          your <span class="mh-eye" aria-hidden="true"><span></span></span> mental wellbeing.
+        </h2>
+
+        <div class="mh-search reveal" style="transition-delay:.15s">
+          <input type="text" placeholder="Ask me anything..." aria-label="Ask me anything">
+          <button type="button" aria-label="Submit question">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mh-lang">pl &mdash; en</div>
+    <div class="mh-corner left">2024</div>
+    <div class="mh-corner right">mental health tools</div>
+  </section>
+
+  <!-- ============ NEXFORMO ============ -->
+  <section class="nx-section" id="nexformo">
+    <video class="nx-video" autoplay muted loop playsinline
+           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_135039_b04d00db-6ee2-4e2a-a7f5-b2dfd3d24fd2.mp4"
+           aria-label="Ambient background video."></video>
+
+    <div class="nx-layer">
+      <div class="nx-main">
+        <div class="nx-row">
+          <div class="nx-badge" aria-hidden="true">
+            <div class="nx-badge-bg"></div>
+            <svg class="nx-spin" viewBox="0 0 200 200">
+              <defs><path id="nx-ring" fill="none" d="M 100,100 m -70,0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/></defs>
+              <text fill="rgba(237,228,208,.8)" font-size="10" font-weight="300" letter-spacing="3">
+                <textPath href="#nx-ring">DESIGN &bull; MODULES &bull; DEVELOP &bull; DEPLOY &bull; ITERATE &bull;</textPath>
+              </text>
+            </svg>
+          </div>
+
+          <div class="nx-copy">
+            <div class="nx-slide is-active" data-nx-slide>
+              <h3>Exploration of <em>neural networks</em> for designing and rendering digital interfaces &mdash; Algorithmic frameworks for composing and refining aesthetics.</h3>
+              <a class="nx-cta" href="#">Browse Projects&mdash;</a>
+            </div>
+            <div class="nx-slide" data-nx-slide>
+              <h3>Development of <em>spatial engines</em> for constructing and animating immersive experiences &mdash; Procedural systems for generating and evolving visual forms.</h3>
+              <a class="nx-cta" href="#">View Case Study&mdash;</a>
+            </div>
+            <div class="nx-slide" data-nx-slide>
+              <h3>Architecture of <em>generative tools</em> for prototyping and deploying reactive layouts &mdash; Modular pipelines for scaling and iterating design output.</h3>
+              <a class="nx-cta" href="#">Explore Process&mdash;</a>
+            </div>
+
+            <div class="nx-dots" role="tablist" aria-label="Slides">
+              <button type="button" class="is-active" data-nx-dot aria-label="Slide 1"></button>
+              <button type="button" data-nx-dot aria-label="Slide 2"></button>
+              <button type="button" data-nx-dot aria-label="Slide 3"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nx-bottom">
+        <div class="nx-marks"><span>2</span><span>H</span><span>W</span></div>
+        <div class="nx-foot">
+          <p>Computational methods for streamlining industrial workflows and minimizing resource usage through <u>algorithmic refinement</u> as an emerging approach in interface architecture.<br> Applications across digital infrastructure.</p>
+          <div class="nx-role">Design Engineer<br>Dynamic Interface Engine</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTENTS ============ -->
+  <section class="doc" id="contents">
+    <div class="doc-inner">
+      <div class="split">
+        <div class="reveal">
+          <div class="label">001 / What is inside</div>
+          <h2 class="h2">Three layers, assembled by people who never met.</h2>
+        </div>
+        <div class="reveal">
+          <p class="lede">The movement has no founder, no scripture and no organisation. It is a synthesis — pseudo-archaeology from the late 1960s, contactee reports from the 1970s, channelled material from the 1990s, and a Gnostic framework eighteen centuries older than any of it. This outline separates the strands and shows the seams.</p>
+        </div>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar reveal">
+          <div class="mk">&sect; B</div>
+          <h3>The origin story</h3>
+          <p>Where the movement says humanity came from — the Anunnaki, the Reptilians, the Pleiadians, the Galactic Federation of Light, the Moon base, the Greys and Mantids, the hollow Earth. Each thread followed back to the text that introduced it.</p>
+        </article>
+        <article class="pillar reveal">
+          <div class="mk">&sect; C</div>
+          <h3>The spiritual frame</h3>
+          <p>The Source, starseeds, soul contracts, the Karmic Council, reincarnation, Gaia, the 144,000, vortexes, crystals, the seven dimensions and the frequency system — stated as adherents hold them, then set against the record.</p>
+        </article>
+        <article class="pillar reveal">
+          <div class="mk">&sect; D</div>
+          <h3>The Gnostic substrate</h3>
+          <p>The 2nd-century cosmology the whole structure is grafted onto: the Monad, the Pleroma, the Aeons, Sophia's fall, the Demiurge and the Archons — and how a Platonic craftsman-god became a devil.</p>
+        </article>
+      </div>
+
+      <ul class="toc">
+        <li class="reveal"><span class="mk">&sect; A</span><span class="ti">Introduction</span><span class="ds">New Age theology; the movement's unnamed status</span><span class="pp">2 pp</span></li>
+        <li class="reveal"><span class="mk">&sect; B</span><span class="ti">Alien-race origin story</span><span class="ds">Ten subsections, Anunnaki through hollow Earth</span><span class="pp">6 pp</span></li>
+        <li class="reveal"><span class="mk">&sect; C</span><span class="ti">Merging origin with theology</span><span class="ds">Eleven subsections, the Source through the Matrix</span><span class="pp">7 pp</span></li>
+        <li class="reveal"><span class="mk">&sect; D</span><span class="ti">Gnostic theology</span><span class="ds">Cosmology, terminology, biblical borrowings</span><span class="pp">4 pp</span></li>
+        <li class="reveal"><span class="mk">&sect; E</span><span class="ti">Additional concepts</span><span class="ds">Ancient pantheons, cryptids, secret societies</span><span class="pp">1 p</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ METHOD ============ -->
+  <section class="doc" id="method" style="padding-top:0">
+    <div class="doc-inner">
+      <div class="rule"></div>
+      <div class="label">002 / Method</div>
+      <p class="method reveal">Every claim is reported as adherents hold it, attributed to the author who introduced it, and followed by a plain statement of what the evidence supports. <em>No belief is mocked. None is endorsed.</em> The reader is left to judge.</p>
+
+      <div class="stats">
+        <div class="stat reveal"><i></i>
+          <div class="n">01</div><div class="v">19</div>
+          <div class="l">Pages, cited and cross-referenced</div>
+        </div>
+        <div class="stat reveal"><i></i>
+          <div class="n">02</div><div class="v">40+</div>
+          <div class="l">Terms and concepts individually defined</div>
+        </div>
+        <div class="stat reveal"><i></i>
+          <div class="n">03</div><div class="v">1864&rarr;</div>
+          <div class="l">Source range, from Verne to current journals</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="doc" id="sources" style="padding-top:0">
+    <div class="doc-inner">
+      <div class="rule"></div>
+      <div class="label">003 / Principal sources discussed</div>
+      <p class="sources reveal">
+        Erich von D&auml;niken, <em>Chariots of the Gods</em> (1968) &middot;
+        Zecharia Sitchin, <em>The Twelfth Planet</em> (1976) and later works &middot;
+        Eduard &ldquo;Billy&rdquo; Meier, contact reports (from 1975) &middot;
+        Barbara Marciniak, <em>Bringers of the Dawn</em> (1992) &middot;
+        Barbara Hand Clow, <em>The Pleiadian Agenda</em> (1995) &middot;
+        David Icke, reptilian material (1990s) &middot;
+        Lovelock &amp; Margulis on the Gaia hypothesis &middot;
+        the Nag Hammadi corpus, including the <em>Apocryphon of John</em> &middot;
+        Plotinus on emanation &middot;
+        Revelation 7 and 14 &middot;
+        and contemporary reporting on the three known interstellar objects,
+        1I/&#699;Oumuamua, 2I/Borisov and 3I/ATLAS.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="doc" id="faq" style="padding-top:0">
+    <div class="doc-inner">
+      <div class="rule"></div>
+      <div class="label">004 / Before you buy</div>
+      <div class="faq">
+        <div class="reveal">
+          <h4>Is this written by a believer?</h4>
+          <p>No. It is written from the outside, in a neutral register. Beliefs are reported accurately and without mockery, then followed by a plain note on what the historical and scientific record actually supports. If you are looking for confirmation, this is the wrong document.</p>
+        </div>
+        <div class="reveal">
+          <h4>Will it tell me whether I am a starseed?</h4>
+          <p>No. It makes no claims about you, offers no reading, diagnosis or identification, and predicts nothing. It describes what the movement teaches about starseeds and where that teaching came from.</p>
+        </div>
+        <div class="reveal">
+          <h4>Why does the movement have no name?</h4>
+          <p>Because it has no central text, founder or organisation. It is a loose synthesis assembled from several unrelated authors across sixty years. &ldquo;Pleiadian New Age movement&rdquo; is the descriptive label this document adopts for the sake of discussion.</p>
+        </div>
+        <div class="reveal">
+          <h4>What do I actually receive?</h4>
+          <p>Immediate access to the current edition as a digital reference document, plus every future revision at no additional cost. One payment. No subscription and no recurring charge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUY ============ -->
+  <section class="doc" id="get" style="padding-top:0">
+    <div class="doc-inner">
+      <div class="buy reveal">
+        <div class="label" style="margin-bottom:18px">Single payment &middot; no subscription</div>
+        <h2 class="h2">The current edition, and every revision after it.</h2>
+        <p>$25 once. Immediate access on purchase. Future editions delivered at no additional cost. Full refund within 14 days, no reason required.</p>
+        <a class="buy-btn" href="#" data-checkout>
+          Get the document &mdash; $25
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+
+      <footer>
+        <div class="rule"></div>
+        <div class="legal">
+          <p>This is an independent scholarly outline of a contemporary belief system, offered for educational, historical and critical purposes. It does not provide medical, psychological, legal or financial advice, makes no predictions, and identifies no individual as belonging to any group. It is not affiliated with, authorised by or endorsed by any organisation, author or person named or discussed within it; third-party works are referenced for commentary, criticism and scholarship. Sold as a digital publication.</p>
+          <nav aria-label="Legal">
+            <a href="#">Terms of sale</a>
+            <a href="#">Refund policy</a>
+            <a href="#">Privacy</a>
+            <a href="#">Contact</a>
+          </nav>
+        </div>
+        <div class="copy">&copy; <span id="yr"></span> &middot; Edition VI &middot; All rights reserved</div>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var nav  = document.querySelector('.nav'),
+      btn  = document.querySelector('.burger'),
+      menu = document.getElementById('primary-menu'),
+      mq   = window.matchMedia('(max-width:1080px) and (max-aspect-ratio:0.91/1), (max-width:620px) and (min-height:480px)');
+
+  function setOpen(open) {
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) { var f = menu.querySelector('a'); if (f) f.focus(); }
+  }
+  btn.addEventListener('click', function () {
+    var willOpen = !nav.classList.contains('open');
+    setOpen(willOpen);
+    if (!willOpen) btn.focus();
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a') || e.target === menu) setOpen(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); btn.focus(); }
+  });
+  (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(
+    function () { if (!mq.matches) setOpen(false); }
+  );
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en, i) {
+        if (en.isIntersecting) {
+          var el = en.target;
+          setTimeout(function(){ el.classList.add('in'); }, i * 70);
+          io.unobserve(el);
+        }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: .12 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+<script>
+/* Sticky stacking cards: earlier cards scale down as later ones arrive.
+   Vanilla equivalent of framer-motion useScroll + useTransform. */
+(function () {
+  var section = document.getElementById('projects'),
+      cards   = document.querySelectorAll('[data-pj-card]');
+  if (!section || !cards.length) return;
+
+  var reduce = false;
+  try { reduce = matchMedia('(prefers-reduced-motion:reduce)').matches; } catch (e) {}
+  if (reduce) return;
+
+  var mq = matchMedia('(min-width:768px)');
+  var N = cards.length, ticking = false;
+
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+  function update() {
+    ticking = false;
+    if (!mq.matches) {
+      for (var k = 0; k < N; k++) cards[k].style.transform = '';
+      return;
+    }
+    var rect = section.getBoundingClientRect(),
+        vh   = window.innerHeight,
+        span = rect.height - vh;
+    if (span <= 0) return;
+
+    // 0 when the section top meets the viewport top, 1 when its bottom meets the bottom
+    var progress = clamp(-rect.top / span);
+
+    for (var i = 0; i < N; i++) {
+      var rangeStart  = i / N,
+          targetScale = 1 - (N - 1 - i) * 0.03,
+          t = clamp((progress - rangeStart) / (1 - rangeStart)),
+          scale = 1 + (targetScale - 1) * t;
+      cards[i].style.transform = 'scale(' + scale.toFixed(4) + ')';
+    }
+  }
+
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  update();
+})();
+</script>
+<script>
+/* Nexformo slide carousel: auto-advance every 5s, dots jump and reset the timer. */
+(function () {
+  var slides = document.querySelectorAll('[data-nx-slide]'),
+      dots   = document.querySelectorAll('[data-nx-dot]');
+  if (!slides.length) return;
+
+  var i = 0, timer = null, DELAY = 5000;
+
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    for (var k = 0; k < slides.length; k++) {
+      slides[k].classList.toggle('is-active', k === i);
+      if (dots[k]) {
+        dots[k].classList.toggle('is-active', k === i);
+        dots[k].setAttribute('aria-selected', String(k === i));
+      }
+    }
+  }
+  function start() { stop(); timer = setInterval(function () { show(i + 1); }, DELAY); }
+  function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+
+  for (var d = 0; d < dots.length; d++) {
+    (function (n) {
+      dots[n].addEventListener('click', function () { show(n); start(); });
+    })(d);
+  }
+
+  // don't burn cycles while the section is off-screen
+  var section = document.getElementById('nexformo');
+  if ('IntersectionObserver' in window && section) {
+    new IntersectionObserver(function (es) {
+      es[0].isIntersecting ? start() : stop();
+    }, { threshold: 0.15 }).observe(section);
+  } else {
+    start();
+  }
+  show(0);
+})();
+</script>
+</body>
+</html>
