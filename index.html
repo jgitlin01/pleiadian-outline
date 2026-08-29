@@ -751,8 +751,12 @@ footer{padding-top:74px}
 
 /* --- sticky wrapper --- */
 .pj-sticky{ margin-bottom:24px; }
+/* the last card's margin collapses out of the section and the sticky hero
+   shows through the gap; hold it inside */
+#pj-stack{ padding-bottom:1px; }
+#pj-stack .pj-sticky:last-child{ margin-bottom:0; }
 .pj-sticky .pj-card{ position:static; top:auto !important; transform:none !important; }
-@media(min-width:768px){
+@media(min-width:1200px){
   .pj-sticky{
     height:88vh; margin-bottom:0;
     display:flex; align-items:flex-start; justify-content:center;
@@ -778,10 +782,12 @@ footer{padding-top:74px}
 .pj-top{
   display:flex; flex-direction:column; gap:24px;
 }
-@media(min-width:640px){
+@media(min-width:1200px){
   .pj-top{flex-direction:row; align-items:center; justify-content:space-between; gap:16px}
 }
-.pj-left{display:flex; align-items:center; gap:24px}
+.pj-left{display:flex; align-items:flex-start; gap:24px}
+@media(min-width:1200px){ .pj-left{align-items:center} }
+.pj-num{line-height:.85}
 @media(min-width:640px){ .pj-left{gap:32px} }
 @media(min-width:768px){ .pj-left{gap:40px} }
 .pj-num{
@@ -923,6 +929,7 @@ footer{padding-top:74px}
   padding-top:clamp(80px, 12vh, 170px);
 }
 .mh-title .lead{color:var(--paper)}
+@media(max-width:1023px){ .mh-title br{display:none} }
 
 /* the pill "eye" between words */
 .mh-eye{
@@ -993,6 +1000,8 @@ footer{padding-top:74px}
   color:rgba(176,166,145,.85);
 }
 .mh-corner.left{left:24px}
+/* the two corner labels collide under ~700px */
+@media(max-width:700px){ .mh-corner.left{display:none} }
 .mh-corner.right{right:24px}
 @media(min-width:768px){
   .mh-corner{bottom:28px}
@@ -1008,6 +1017,18 @@ footer{padding-top:74px}
   overflow:hidden;
   background:var(--ink);
   font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+/* tablet and phone: the mesh sits directly under the copy at these widths,
+   so the section grows to fit and the video gets a scrim. Desktop keeps the
+   un-overlaid video the brief asked for. */
+@media(max-width:1200px){
+  .nx-section{height:auto; min-height:var(--vh); padding-bottom:8px}
+  .nx-layer{height:auto; min-height:var(--vh)}
+  .nx-section::after{
+    content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg,
+      rgba(10,12,31,.72) 0%, rgba(10,12,31,.56) 45%, rgba(10,12,31,.82) 100%);
+  }
 }
 .nx-section *{font-family:inherit}
 .nx-video{
@@ -1747,7 +1768,7 @@ main#top{position:relative}
   try { reduce = matchMedia('(prefers-reduced-motion:reduce)').matches; } catch (e) {}
   if (reduce) return;
 
-  var mq = matchMedia('(min-width:768px)');
+  var mq = matchMedia('(min-width:1200px)');
   var N = cards.length, ticking = false;
 
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
