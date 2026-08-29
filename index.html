@@ -636,9 +636,10 @@ footer{padding-top:74px}
 
 /* --- buttons --- */
 .eq-btn{
+  display:inline-flex; align-items:center; justify-content:center;
   font-size:14px; font-weight:500; line-height:1.2;
   padding:10px 16px; border-radius:9999px;
-  border:0; cursor:pointer;
+  border:0; cursor:pointer; text-decoration:none; white-space:nowrap;
   transition:background-color .2s ease, color .2s ease;
 }
 .eq-btn-ghost{color:#fff}
@@ -762,6 +763,13 @@ footer{padding-top:74px}
   font-weight:300; letter-spacing:.02em;
   color:var(--paper);
   font-size:clamp(.9rem, 2vw, 2rem);
+}
+.pj-sub{
+  font-family:'Spectral',Georgia,serif;
+  font-weight:300; line-height:1.55;
+  color:var(--paper-dim);
+  font-size:clamp(.76rem, 1.05vw, 1rem);
+  max-width:60ch;
 }
 .pj-live{
   display:inline-flex; align-items:center; justify-content:center;
@@ -899,23 +907,25 @@ footer{padding-top:74px}
   max-width:420px;
   box-shadow:0 1px 2px rgba(6,8,15,.45);
 }
-.mh-search input{
+.mh-search{
+  text-decoration:none;
+  transition:border-color .25s ease, background-color .25s ease;
+}
+.mh-search:hover{border-color:rgba(192,138,62,.5); background:rgba(237,228,208,.08)}
+.mh-label{
   flex:1 1 auto; min-width:0;
-  background:transparent; border:0; outline:none;
   font-family:'Spectral',Georgia,serif;
   font-size:15px; font-weight:300;
   color:var(--paper);
 }
-.mh-search input::placeholder{color:var(--paper-dim); opacity:.8}
-.mh-search button{
+.mh-go{
   flex:none;
   width:36px; height:36px; border-radius:9999px;
   background:var(--paper); color:#17130C;
-  border:0; cursor:pointer; position:relative;
   display:inline-flex; align-items:center; justify-content:center;
   transition:background-color .25s ease;
 }
-.mh-search button:hover{background:var(--brass); color:#0B0906}
+.mh-search:hover .mh-go{background:var(--brass); color:#0B0906}
 
 /* --- edge anchors --- */
 .mh-lang{
@@ -1171,11 +1181,11 @@ footer{padding-top:74px}
            aria-label="Looping ambient background video."></video>
 
     <div class="eq-hero">
-      <h2>Live Better, Feel Whole Every Day</h2>
-      <p>Take charge of how you feel with a companion built for your journey&mdash;build routines, follow your growth, and unlock tailored insights for a steadier, more vibrant life each day.</p>
+      <h2>A movement with no founder, no scripture and no name.</h2>
+      <p>It has no central text and no organisation. &ldquo;Pleiadian New Age movement&rdquo; is the label this document adopts so the beliefs can be discussed at all. Nineteen pages, five sections, every claim tied to the author who introduced it.</p>
       <div class="eq-hero-btns">
-        <button type="button" class="eq-btn eq-btn-solid">Start Today</button>
-        <button type="button" class="eq-btn eq-btn-ghost liquid-glass">Discover How</button>
+        <a class="eq-btn eq-btn-solid" href="#get">Read Edition VI</a>
+        <a class="eq-btn eq-btn-ghost liquid-glass" href="#contents">See the contents</a>
       </div>
     </div>
   </section>
@@ -1183,7 +1193,7 @@ footer{padding-top:74px}
   <!-- ============ PROJECTS ============ -->
   <section class="pj-section" id="projects">
     <div class="pj-head">
-      <h2 class="reveal">Project</h2>
+      <h2 class="reveal">Inside</h2>
     </div>
     <div id="pj-stack">
       <div class="pj-sticky">
@@ -1192,19 +1202,20 @@ footer{padding-top:74px}
             <div class="pj-left">
               <div class="pj-num">01</div>
               <div class="pj-meta">
-                <div class="pj-cat">Client</div>
-                <div class="pj-name">Nextlevel Studio</div>
+                <div class="pj-cat">&sect; B &middot; Six pages</div>
+                <div class="pj-name">Alien-race origin story</div>
+                <p class="pj-sub">Sitchin&rsquo;s Anunnaki and the planet Nibiru, von D&auml;niken&rsquo;s ancient astronauts, Icke&rsquo;s Reptilians, the war over Earth, the Galactic Federation of Light, the Moon base, the Greys and Mantids, the three interstellar objects, and the hollow Earth. Ten subsections, each followed back to the book that introduced it.</p>
               </div>
             </div>
-            <a class="pj-live" href="#" target="_blank" rel="noopener noreferrer">Live Project</a>
+            <a class="pj-live" href="#get">Read Edition VI</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&amp;w=1280&amp;q=85" alt="Nextlevel Studio project image one" loading="lazy" decoding="async">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&amp;w=1280&amp;q=85" alt="Nextlevel Studio project image two" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
             </div>
             <div class="pj-col2">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&amp;w=1280&amp;q=85" alt="Nextlevel Studio project image three" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
             </div>
           </div>
         </article>
@@ -1215,19 +1226,20 @@ footer{padding-top:74px}
             <div class="pj-left">
               <div class="pj-num">02</div>
               <div class="pj-meta">
-                <div class="pj-cat">Personal</div>
-                <div class="pj-name">Aura Brand Identity</div>
+                <div class="pj-cat">&sect; C &middot; Seven pages</div>
+                <div class="pj-name">Where the origin story becomes a theology</div>
+                <p class="pj-sub">The Source, starseeds, the Pleiadian Council of Light, soul contracts, reincarnation, the Karmic Council, Gaia, the 144,000, vortexes and crystals, the seven dimensions, the frequency system, and the Matrix. Eleven subsections, stated as adherents hold them and then set against the record.</p>
               </div>
             </div>
-            <a class="pj-live" href="#" target="_blank" rel="noopener noreferrer">Live Project</a>
+            <a class="pj-live" href="#get">Read Edition VI</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&amp;w=1280&amp;q=85" alt="Aura Brand Identity project image one" loading="lazy" decoding="async">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&amp;w=1280&amp;q=85" alt="Aura Brand Identity project image two" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
             </div>
             <div class="pj-col2">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&amp;w=1280&amp;q=85" alt="Aura Brand Identity project image three" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
             </div>
           </div>
         </article>
@@ -1238,19 +1250,20 @@ footer{padding-top:74px}
             <div class="pj-left">
               <div class="pj-num">03</div>
               <div class="pj-meta">
-                <div class="pj-cat">Client</div>
-                <div class="pj-name">Solaris Digital</div>
+                <div class="pj-cat">&sect; D &middot; Four pages</div>
+                <div class="pj-name">The Gnostic substrate</div>
+                <p class="pj-sub">The 2nd-century cosmology the whole structure is grafted onto: the Monad, the Pleroma, the Aeons, Sophia&rsquo;s fall, the Demiurge she cast out, and the Archons who guard the spheres. Plus how Plato&rsquo;s craftsman-god became a devil, and what the movement borrowed from Revelation.</p>
               </div>
             </div>
-            <a class="pj-live" href="#" target="_blank" rel="noopener noreferrer">Live Project</a>
+            <a class="pj-live" href="#get">Read Edition VI</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&amp;w=1280&amp;q=85" alt="Solaris Digital project image one" loading="lazy" decoding="async">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&amp;w=1280&amp;q=85" alt="Solaris Digital project image two" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
             </div>
             <div class="pj-col2">
-              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&amp;w=1280&amp;q=85" alt="Solaris Digital project image three" loading="lazy" decoding="async">
+              <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async">
             </div>
           </div>
         </article>
@@ -1270,23 +1283,22 @@ footer{padding-top:74px}
     <div class="mh-inner">
       <div class="mh-col">
         <h2 class="mh-title reveal">
-          <span class="lead">Remix: Mentality offers</span> information<br>
-          and resources to help you manage<br>
-          your <span class="mh-eye" aria-hidden="true"><span></span></span> mental wellbeing.
+          <span class="lead">Every claim is traced</span> to the book,<br>
+          author and year that introduced it.<br>
+          No belief is mocked. <span class="mh-eye" aria-hidden="true"><span></span></span> None is endorsed.
         </h2>
 
-        <div class="mh-search reveal" style="transition-delay:.15s">
-          <input type="text" placeholder="Ask me anything..." aria-label="Ask me anything">
-          <button type="button" aria-label="Submit question">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </div>
+        <a class="mh-search reveal" href="#get" style="transition-delay:.15s">
+          <span class="mh-label">Read Edition VI &middot; $25 once</span>
+          <span class="mh-go" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
       </div>
     </div>
 
-    <div class="mh-lang">pl &mdash; en</div>
-    <div class="mh-corner left">2024</div>
-    <div class="mh-corner right">mental health tools</div>
+    <div class="mh-corner left">Edition VI</div>
+    <div class="mh-corner right">Independent reference</div>
   </section>
 
   <!-- ============ NEXFORMO ============ -->
@@ -1303,23 +1315,23 @@ footer{padding-top:74px}
             <svg class="nx-spin" viewBox="0 0 200 200">
               <defs><path id="nx-ring" fill="none" d="M 100,100 m -70,0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/></defs>
               <text fill="rgba(237,228,208,.8)" font-size="10" font-weight="300" letter-spacing="3">
-                <textPath href="#nx-ring">DESIGN &bull; MODULES &bull; DEVELOP &bull; DEPLOY &bull; ITERATE &bull;</textPath>
+                <textPath href="#nx-ring">ORIGIN &bull; THEOLOGY &bull; GNOSIS &bull; SOURCES &bull; EDITION VI &bull;</textPath>
               </text>
             </svg>
           </div>
 
           <div class="nx-copy">
             <div class="nx-slide is-active" data-nx-slide>
-              <h3>Exploration of <em>neural networks</em> for designing and rendering digital interfaces &mdash; Algorithmic frameworks for composing and refining aesthetics.</h3>
-              <a class="nx-cta" href="#">Browse Projects&mdash;</a>
+              <h3>The origin story runs from <em>Sitchin&rsquo;s Anunnaki</em> through von D&auml;niken&rsquo;s ancient astronauts to Icke&rsquo;s Reptilians, the Galactic Federation of Light, and a Moon that adherents hold to be a base.</h3>
+              <a class="nx-cta" href="#contents">See the contents</a>
             </div>
             <div class="nx-slide" data-nx-slide>
-              <h3>Development of <em>spatial engines</em> for constructing and animating immersive experiences &mdash; Procedural systems for generating and evolving visual forms.</h3>
-              <a class="nx-cta" href="#">View Case Study&mdash;</a>
+              <h3>The theology sits on top of it. <em>Soul contracts</em>, the Karmic Council, starseeds, the 144,000, the seven dimensions and the frequency system, each stated as adherents hold it and then set against the record.</h3>
+              <a class="nx-cta" href="#method">How it is written</a>
             </div>
             <div class="nx-slide" data-nx-slide>
-              <h3>Architecture of <em>generative tools</em> for prototyping and deploying reactive layouts &mdash; Modular pipelines for scaling and iterating design output.</h3>
-              <a class="nx-cta" href="#">Explore Process&mdash;</a>
+              <h3>Underneath both sits a cosmology from the 2nd century. <em>The Monad and the Pleroma</em>, Sophia&rsquo;s fall, the Demiurge she cast out, and the Archons who guard the spheres.</h3>
+              <a class="nx-cta" href="#sources">See the sources</a>
             </div>
 
             <div class="nx-dots" role="tablist" aria-label="Slides">
@@ -1332,10 +1344,10 @@ footer{padding-top:74px}
       </div>
 
       <div class="nx-bottom">
-        <div class="nx-marks"><span>2</span><span>H</span><span>W</span></div>
+        <div class="nx-marks"><span>&sect; A</span><span>&sect; C</span><span>&sect; E</span></div>
         <div class="nx-foot">
-          <p>Computational methods for streamlining industrial workflows and minimizing resource usage through <u>algorithmic refinement</u> as an emerging approach in interface architecture.<br> Applications across digital infrastructure.</p>
-          <div class="nx-role">Design Engineer<br>Dynamic Interface Engine</div>
+          <p>An independent outline of a contemporary belief system, written from the outside for educational, historical and critical purposes. It reports what adherents hold, names the <u>author and year</u> behind each claim, and states what the record supports.<br> It identifies no one and predicts nothing.</p>
+          <div class="nx-role">Independent reference<br>Edition VI &middot; Nineteen pages</div>
         </div>
       </div>
     </div>
