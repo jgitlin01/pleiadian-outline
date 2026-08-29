@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Source art (10MB PNGs); shipped versions live in img/*.webp
+Alien-race origin story *.png
