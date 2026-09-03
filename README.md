@@ -1,8 +1,8 @@
-# The Pleiadian Outline — landing page
+# Pleiadian New Age Movement site
 
 ## What ships
 
-`index.html` is the live page. It is the video-portal design: fully
+`index.html` is the live page (Movement site, with the Field Guide as one section). It is the video-portal design: fully
 self-contained, no local assets. Fonts come from Google Fonts, the hero
 poster and mp4 come from CloudFront.
 
