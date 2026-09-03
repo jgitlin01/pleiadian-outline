@@ -250,10 +250,10 @@ h1 .l1>span,h1 .l2>span{display:block}
   position:relative;
   display:inline-flex; align-items:center; justify-content:center;
   width:auto;
-  padding:0 clamp(22px, calc(30 * var(--k)), 40px);
-  height:max(40px, calc(46 * var(--k)));
+  padding:0 clamp(28px, calc(40 * var(--k)), 54px);
+  height:max(48px, calc(58 * var(--k)));
   font-family:'IBM Plex Mono',ui-monospace,monospace;
-  font-size:var(--fs-cta);
+  font-size:calc(var(--fs-cta) * 1.12);
   font-weight:400; letter-spacing:var(--tracking-mono);
   text-transform:uppercase;
   color:var(--c-cta-fg); text-decoration:none; white-space:nowrap;
@@ -271,6 +271,26 @@ h1 .l1>span,h1 .l2>span{display:block}
   box-shadow:0 0 calc(38 * var(--k)) rgba(192,138,62,.42);
   transform:translateY(calc(-1 * var(--k)));
 }
+/* portal light on the CTA: breathing glow + a sweep of light passing across */
+.cta{
+  box-shadow:0 0 calc(26 * var(--k)) rgba(255,220,170,.30), 0 0 calc(64 * var(--k)) rgba(192,138,62,.20);
+  animation:ctaGlow 2.8s ease-in-out infinite;
+}
+.cta>span{position:relative;z-index:1}
+.cta::before{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(105deg, transparent 34%, rgba(255,196,110,.55) 46%, rgba(255,255,255,.95) 50%, rgba(255,196,110,.55) 54%, transparent 66%);
+  background-size:260% 100%; background-position:160% 0;
+  animation:ctaSweep 3.4s ease-in-out infinite;
+}
+@keyframes ctaGlow{
+  0%,100%{box-shadow:0 0 calc(28 * var(--k)) rgba(255,220,170,.45), 0 0 calc(70 * var(--k)) rgba(192,138,62,.28)}
+  50%{box-shadow:0 0 calc(64 * var(--k)) rgba(255,232,200,.95), 0 0 calc(160 * var(--k)) rgba(210,150,70,.60)}
+}
+@keyframes ctaSweep{0%,45%{background-position:160% 0}100%{background-position:-60% 0}}
+@media(prefers-reduced-motion:reduce){.cta,.cta::before{animation:none}}
+a.pricenote{text-decoration:none;border-bottom:1px solid rgba(237,228,208,.28);padding-bottom:2px;transition:color .25s,border-color .25s}
+a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(--brass)}
 .cta i{position:absolute;pointer-events:none;width:var(--brk-len);height:var(--brk-len)}
 .cta i::before,.cta i::after{content:'';position:absolute;background:var(--c-line)}
 .cta i::before{width:100%;height:var(--brk-w)}
@@ -1341,10 +1361,11 @@ main#top{position:relative}
         <span class="l2"><span>Of New Age Thought</span></span>
       </h1>
       <p class="sub">Founded by Danny Thomas and Victoria Eslinger to bring order out of the chaos of current New Age thought. One movement, explained in one Guide.</p>
-      <a class="cta" href="#about">
-        <span>about the movement</span>
+      <a class="cta" href="#get">
+        <span>get the guide</span>
         <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
       </a>
+      <a class="pricenote" href="#about">About the Movement</a>
     </div>
   </section>
 
