@@ -1,4 +1,4 @@
-# Pleiadian New Age Movement site
+# Pleiadian New Age Movement (PNAM) site
 
 ## What ships
 
