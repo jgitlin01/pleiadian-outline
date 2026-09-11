@@ -223,15 +223,16 @@ body{
 h1{
   font-family:'Righteous','Trebuchet MS',sans-serif;
   font-variation-settings:'SOFT' 0,'WONK' 1;
-  font-weight:300;
-  font-size:var(--fs-head);
-  line-height:var(--leading-display);
+  font-weight:400;
+  font-size:clamp(30px, 5.1vw, 72px);
+  line-height:1.1;
   letter-spacing:var(--tracking-tight);
   text-shadow:0 calc(2 * var(--k)) calc(38 * var(--k)) rgba(6,8,15,.55);
 }
 h1 .l1{display:block;color:var(--c-head1)}
 h1 .l2{display:block;color:var(--c-head2);font-style:italic}
-h1 .l1,h1 .l2{overflow:hidden;padding-bottom:.28em;margin-bottom:-.28em}
+h1 .l1,h1 .l2{padding-bottom:.06em}
+h1 .l2{font-size:.82em}
 h1 .l1>span,h1 .l2>span{display:block}
 
 .sub{
@@ -375,6 +376,47 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   color:#F6EEDC; margin-top:auto;
 }
 .pillar p{font-size:18px;line-height:1.65;font-weight:300;color:var(--paper-dim)}
+
+/* Section Headings: one font, one size, one colour across all six sections.
+   Righteous is the standard free stand-in for Bauhaus 93. */
+.sec-h, .eq-section .sec-h, .pj-head .sec-h{
+  font-family:'Righteous','Trebuchet MS',sans-serif;
+  font-weight:400;
+  font-size:clamp(23px,3.1vw,44px);
+  line-height:1.14; letter-spacing:0;
+  color:#F6EEDC;
+  -webkit-text-fill-color:currentColor;
+  background:none;
+  text-transform:none;
+  margin:0;
+}
+.sec-h .n{
+  font-family:'Space Mono',ui-monospace,monospace;
+  font-size:.42em; letter-spacing:.10em;
+  color:var(--brass); margin-right:.55em;
+  vertical-align:.16em;
+}
+.pj-head .sec-h{text-align:center}
+
+.prices{
+  display:grid; gap:20px; margin-top:44px;
+  grid-template-columns:1fr;
+}
+@media(min-width:720px){.prices{grid-template-columns:1fr 1fr;gap:28px}}
+.price{
+  border:1px solid rgba(192,138,62,.3);
+  border-radius:14px; padding:28px 30px;
+  background:rgba(237,228,208,.03);
+}
+.price-amt{
+  font-family:'Righteous','Trebuchet MS',sans-serif;
+  font-size:clamp(34px,3.6vw,52px); line-height:1; color:#F6EEDC;
+}
+.price-lbl{
+  margin-top:12px;
+  font-family:'Space Mono',ui-monospace,monospace;
+  font-size:14px; line-height:1.6; color:var(--paper-dim);
+}
 
 .bullets{list-style:none;margin-top:52px;display:grid;gap:26px;max-width:86ch}
 .bullets li{
@@ -600,6 +642,7 @@ footer{padding-top:74px}
   .nav.open .nav-links a:nth-child(2){transition-delay:.12s}
   .nav.open .nav-links a:nth-child(3){transition-delay:.18s}
   .nav.open .nav-links a:nth-child(4){transition-delay:.24s}
+  .nav.open .nav-links a:nth-child(5){transition-delay:.30s}
   .cta::after{
     content:''; position:absolute; left:0; right:0; top:50%;
     height:max(100%, 44px); transform:translateY(-50%);
@@ -751,14 +794,7 @@ footer{padding-top:74px}
   max-width:42rem;
 }
 @media(min-width:640px){ .eq-hero{padding:clamp(96px,14vh,150px) 48px 64px} }
-.eq-hero h2{
-  color:#fff;
-  font-size:36px; font-weight:500;
-  line-height:1.25; letter-spacing:-.025em;
-  margin-bottom:16px;
-}
-@media(min-width:640px){ .eq-hero h2{font-size:48px} }
-@media(min-width:1024px){ .eq-hero h2{font-size:60px} }
+.eq-hero h2{ margin-bottom:16px; }
 .eq-hero p{
   color:rgba(255,255,255,.6);
   font-size:18px; line-height:1.6;
@@ -790,17 +826,7 @@ footer{padding-top:74px}
 }
 @media(min-width:640px){ .pj-head{padding:96px 0} }
 @media(min-width:768px){ .pj-head{padding:128px 0} }
-.pj-head h2{
-  font-family:'Righteous','Trebuchet MS',sans-serif;
-  font-variation-settings:'SOFT' 0,'WONK' 1;
-  font-weight:900;
-  font-size:clamp(3rem, 12vw, 160px);
-  line-height:1; letter-spacing:-.03em;
-  text-transform:uppercase; text-align:center; width:100%;
-  background:linear-gradient(180deg, var(--brass) 0%, #F6EEDC 100%);
-  -webkit-background-clip:text; background-clip:text;
-  -webkit-text-fill-color:transparent; color:transparent;
-}
+.pj-head h2{ text-align:center; width:100%; }
 
 /* --- sticky wrapper --- */
 .pj-sticky{ margin-bottom:24px; }
@@ -1360,11 +1386,12 @@ main#top{position:relative}
   <div class="nav-links" id="primary-menu">
     <a href="#back-story">Back Story</a>
     <a href="#website">Website</a>
-    <a href="#guide">The Guide</a>
+    <a href="#guide">Field Guide</a>
     <a href="#contents">Contents</a>
+    <a href="#contact">Contact</a>
   </div>
 
-  <a class="nav-cta" href="#get">Field Guide</a>
+  <a class="nav-cta" href="#obtain">Get the Guide</a>
 
   <button class="burger" type="button" aria-label="Open menu"
           aria-expanded="false" aria-controls="primary-menu">
@@ -1383,28 +1410,26 @@ main#top{position:relative}
     <div class="veil-b"></div>
 
     <div class="stack">
-      <div class="eyebrow">Pleiadian New Age Movement</div>
       <h1>
-        <span class="l1"><span>&ndash; Bringing Order</span></span>
-        <span class="l2"><span>Out Of The Chaos &ndash;</span></span>
+        <span class="l1"><span>Pleiadian New Age Movement</span></span>
+        <span class="l2"><span>&ndash; Bringing Order Out Of The Chaos &ndash;</span></span>
       </h1>
-      <p class="sub">Finally, there is one Movement providing structure and clarity to modern <em>New Age Thought</em> - the <strong>Pleiadian New Age Movement.</strong></p>
-      <a class="cta" href="#website">
-        <span>pnam website</span>
+      <p class="sub">Finally, there is one Movement providing structure and clarity to modern <em>New Age Thought</em>!</p>
+      <a class="cta" href="#back-story">
+        <span>enter</span>
         <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
       </a>
-      <a class="pricenote" href="#guide">Field Guide to PNAM</a>
     </div>
   </section>
 
-  <!-- ============ BACK STORY ============ -->
+  <!-- ============ [1] BACK STORY ============ -->
   <section class="eq-section" id="back-story">
     <video class="eq-video" autoplay muted loop playsinline
            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4"
            aria-label="Looping ambient background video."></video>
 
     <div class="eq-hero">
-      <h2>Back Story</h2>
+      <h2 class="sec-h"><span class="n">[1]</span>Back Story</h2>
       <p>A multitude of New Age groups and writers exist with a great diversity in concepts and beliefs of <em>New Age Thought</em> extending over 75 years of time. Navigating through and making sense of <em>New Age Thought</em> can be confusing and at times chaotic due to the diversity and contradiction in many aspects of the varied concepts and belief systems of the various New Age groups over the years.</p>
       <p>In response to this divergence, confusion, and misunderstandings, two New Age thinkers, Danny Thomas and Victoria Eslinger, have sought to identify and distill the core concepts and core beliefs common to modern <em>New Age Thought</em> into one core New Age Movement: the <em>Pleiadian New Age Movement (&ldquo;PNAM&rdquo;)</em>.</p>
       <p>In these efforts to bring structure and clarity to modern <em>New Age Thought</em> the Founders commissioned: (1) the creation of this PNAM Website to bring New Age thinkers together and provide a forum for interaction and discourse; and (2) the preparation of a comprehensive <em>Field Guide</em> explaining the background and purposes of modern <em>New Age Thought</em> in general and of the PNAM Movement in particular.</p>
@@ -1416,18 +1441,12 @@ main#top{position:relative}
     </div>
   </section>
 
-  <!-- ============ PNAM WEBSITE ============ -->
+  <!-- ============ [2] PNAM WEBSITE ============ -->
   <section class="doc" id="website">
     <div class="doc-inner">
-      <div class="split">
-        <div class="reveal">
-          <div class="label">001 / PNAM Website</div>
-          <h2 class="h2">PNAM Website</h2>
-        </div>
-        <div class="reveal">
-          <p class="lede">The current <em>PNAM Website</em> is only the beginning. The <em>PNAM Website</em> will grow to provide additional information, connections, and opportunities for people visiting the <em>PNAM Website</em> as it grows in circulation and evolves in its scope of coverage of modern <em>New Age Thought</em>. In the near future, it is anticipated the <em>PNAM Website</em> will be expanded to provide some of the following benefits to its users:</p>
-        </div>
-      </div>
+      <h2 class="sec-h reveal"><span class="n">[2]</span>PNAM Website</h2>
+
+      <p class="sources reveal" style="margin-top:44px">The current <em>PNAM Website</em> is only the beginning. The <em>PNAM Website</em> will grow to provide additional information, connections, and opportunities for people visiting the <em>PNAM Website</em> as it grows in circulation and evolves in its scope of coverage of modern <em>New Age Thought</em>. In the near future, it is anticipated the <em>PNAM Website</em> will be expanded to provide some of the following benefits to its users:</p>
 
       <ul class="bullets reveal">
         <li>Articles and Essays on important New Age Issues and Topics.</li>
@@ -1439,14 +1458,34 @@ main#top{position:relative}
         <li>Tips and advice as to New Age practices, health, diet, and calming exercises and destination points.</li>
       </ul>
 
-      <p class="sources reveal" style="margin-top:56px">There is no cost to accessing and using the <em>PNAM Website</em>. Funding for the <em>PNAM Website</em> will come from sales of its <em>Field Guide</em> (discussed below) and additional products <em>PNAM</em> may later make available on it's Website.</p>
+      <p class="sources reveal" style="margin-top:52px">There is no cost to accessing and using the <em>PNAM Website</em>. Funding for the <em>PNAM Website</em> will come from sales of its <em>Field Guide</em> (discussed below) and additional products <em>PNAM</em> may later make available on it's Website.</p>
     </div>
   </section>
 
-  <!-- ============ CORE BELIEFS ============ -->
-  <section class="pj-section" id="concepts">
+  <!-- ============ [3] FIELD GUIDE TO PNAM ============ -->
+  <section class="doc" id="guide" style="padding-top:0">
+    <div class="doc-inner">
+      <div class="rule"></div>
+      <h2 class="sec-h reveal"><span class="n">[3]</span>Field Guide to PNAM</h2>
+
+      <p class="sources reveal" style="margin-top:44px">The <em>Field Guide</em> is a straight forward neutral objective discussion of the facts, history, core concepts, and core beliefs of modern <em>New Age Thought</em> that are distilled into the <em>Pleiadian New Age Movement</em>. The primary purpose of the <em>Field Guide</em> is to bring structure and understanding to modern <em>New Age Thought</em> discourse and development.</p>
+
+      <p class="sources reveal" style="margin-top:34px">The <em>Field Guide</em> was not written by the Founders. It is the result of third party scholarly research into the historic religious background of the current core concepts and beliefs of <em>New Age Thought</em> going back more than 5,000 years; as well as subsequent foundational historical background of <em>New Age Thought</em> over the past 75 years.</p>
+
+      <p class="sources reveal" style="margin-top:34px">The <em>Field Guide</em> clearly and succinctly explains these core concepts and core beliefs in an easily readable format that can be understood and considered by the reader; and thereby provides the reader a pathway to understand these core concepts and core beliefs from the perspective of adherents of modern <em>New Age Thought</em>.</p>
+
+      <p class="sources reveal" style="margin-top:34px">The <em>Field Guide</em> does not delve into contrarian or competing views of the subject matter presented. It does not seek to verify or dismiss concepts and beliefs of modern <em>New Age Thought</em>, it simply explains them.</p>
+
+      <p class="sources reveal" style="margin-top:34px">This <em>Field Guide</em> is just the First Edition, and the start of something far bigger. In time, the <em>Field Guide</em> will be expanded to provide clarification and additional important information and developments in <em>New Age Thought</em>. Announcements of new Editions of the <em>Field Guide</em> will be made to people who have bought the First Edition and people who visit the <em>PNAM Website</em>.</p>
+
+      <p class="sources reveal" style="margin-top:34px">In order to illustrate the scope of the <em>Field Guide</em>, a copy of the <em>Table of Contents</em> of the <em>Field Guide</em> is provided below.</p>
+    </div>
+  </section>
+
+  <!-- ============ [4] TABLE OF CONTENTS ============ -->
+  <section class="pj-section" id="contents">
     <div class="pj-head">
-      <h2 class="reveal">Field Guide</h2>
+      <h2 class="sec-h reveal"><span class="n">[4]</span>Table of Contents</h2>
     </div>
     <div id="pj-stack">
       <div class="pj-sticky">
@@ -1455,12 +1494,27 @@ main#top{position:relative}
             <div class="pj-left">
               <div class="pj-num">01</div>
               <div class="pj-meta">
+                <div class="pj-cat">A</div>
+                <div class="pj-name">INTRODUCTION</div>
+                <ol class="pj-toc"><li><b>1.</b>Purpose of Guide</li><li><b>2.</b>New Age Theology in General</li><li><b>3.</b>Pleiadian New Age Movement Theology &ndash; Distillation of Core Concepts and Beliefs of Modern New Age Thought</li></ol>
+              </div>
+            </div>
+            <a class="pj-live" href="#obtain">Get the Guide</a>
+          </div>
+        </article>
+      </div>
+      <div class="pj-sticky">
+        <article class="pj-card" data-pj-card style="top:28px">
+          <div class="pj-top">
+            <div class="pj-left">
+              <div class="pj-num">02</div>
+              <div class="pj-meta">
                 <div class="pj-cat">B</div>
                 <div class="pj-name">ALIEN SPECIES BASED HUMAN ORIGIN STORY OF THE PLEIADIAN NEW AGE MOVEMENT</div>
                 <ol class="pj-toc"><li><b>1.</b>Anunnaki</li><li><b>2.</b>Reptilians</li><li><b>3.</b>Pleiadians</li><li><b>4.</b>War Between the Anunnaki and the Pleiadians over Control of Earth; After the War</li><li><b>5.</b>Galactic Federation of Light</li><li><b>6.</b>Federation Moon Base</li><li><b>7.</b>Russia / Ukraine Conflict</li><li><b>8.</b>Greys and Mantis Alien Species</li><li><b>9.</b>11 Oumuamua and 31 Atlas; Mars Bases; US Space Force</li><li><b>10.</b>Inner / Hallow Earth</li></ol>
               </div>
             </div>
-            <a class="pj-live" href="#contents">TABLE OF CONTENTS</a>
+            <a class="pj-live" href="#obtain">Get the Guide</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
@@ -1474,17 +1528,17 @@ main#top{position:relative}
         </article>
       </div>
       <div class="pj-sticky">
-        <article class="pj-card" data-pj-card style="top:28px">
+        <article class="pj-card" data-pj-card style="top:56px">
           <div class="pj-top">
             <div class="pj-left">
-              <div class="pj-num">02</div>
+              <div class="pj-num">03</div>
               <div class="pj-meta">
                 <div class="pj-cat">C</div>
                 <div class="pj-name">MERGING ORIGIN STORY WITH NEW AGE THEOLOGY</div>
                 <ol class="pj-toc"><li><b>1.</b>Ultimate Source</li><li><b>2.</b>New Age View of Pleiadians</li><li><b>3.</b>Starseeds</li><li><b>4.</b>Pleiadian Council of Light; Soul Contracts; Chosen Ones &ndash; Two Meanings</li><li><b>5.</b>Reincarnation</li><li><b>6.</b>Karma; Karmic Council</li><li><b>7.</b>GAIA Concept</li><li><b>8.</b>Equalization of the Forces of Divine Femininity and Divine Masculinity</li><li><b>9.</b>Palmistry</li><li><b>10.</b>Rapture</li><li><b>11.</b>Vortexes, Portals, Crystals, Dimensions of Reality, Frequencies</li><li><b>12.</b>Matrix</li></ol>
               </div>
             </div>
-            <a class="pj-live" href="#contents">TABLE OF CONTENTS</a>
+            <a class="pj-live" href="#obtain">Get the Guide</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
@@ -1498,17 +1552,17 @@ main#top{position:relative}
         </article>
       </div>
       <div class="pj-sticky">
-        <article class="pj-card" data-pj-card style="top:56px">
+        <article class="pj-card" data-pj-card style="top:84px">
           <div class="pj-top">
             <div class="pj-left">
-              <div class="pj-num">03</div>
+              <div class="pj-num">04</div>
               <div class="pj-meta">
                 <div class="pj-cat">D</div>
                 <div class="pj-name">INCORPORATION OF GNOSTIC CONCEPTS INTO PLEIADIAN NEW AGE MOVEMENT THEOLOGY</div>
                 <ol class="pj-toc"><li><b>1.</b>Introduction</li><li><b>2.</b>Gnostic Cosmology: Monad, Aeons, Pleroma, Sophia, Demiurge, Archons</li><li><b>3.</b>Origin of the Term &ldquo;Demiurge&rdquo;</li><li><b>4.</b>Biblical and Christian Based Concepts</li></ol>
               </div>
             </div>
-            <a class="pj-live" href="#contents">TABLE OF CONTENTS</a>
+            <a class="pj-live" href="#obtain">Get the Guide</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
@@ -1521,110 +1575,66 @@ main#top{position:relative}
           </div>
         </article>
       </div>
+      <div class="pj-sticky">
+        <article class="pj-card" data-pj-card style="top:112px">
+          <div class="pj-top">
+            <div class="pj-left">
+              <div class="pj-num">05</div>
+              <div class="pj-meta">
+                <div class="pj-cat">E</div>
+                <div class="pj-name">ADDITIONAL CONCEPTS INCORPORATED INTO THE PLEIADIAN NEW AGE MOVEMENT</div>
+              </div>
+            </div>
+            <a class="pj-live" href="#obtain">Get the Guide</a>
+          </div>
+        </article>
+      </div>
+      <div class="pj-sticky">
+        <article class="pj-card" data-pj-card style="top:140px">
+          <div class="pj-top">
+            <div class="pj-left">
+              <div class="pj-num">06</div>
+              <div class="pj-meta">
+                <div class="pj-cat">F</div>
+                <div class="pj-name">EPILOGUE</div>
+              </div>
+            </div>
+            <a class="pj-live" href="#obtain">Get the Guide</a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ============ FIELD GUIDE TO PNAM ============ -->
-  <section class="doc" id="guide">
+  <!-- ============ [5] HOW TO OBTAIN THE FIELD GUIDE ============ -->
+  <section class="doc" id="obtain">
     <div class="doc-inner">
-      <div class="split">
-        <div class="reveal">
-          <div class="label">002 / Field Guide to PNAM</div>
-          <h2 class="h2">Field Guide to PNAM</h2>
+      <h2 class="sec-h reveal"><span class="n">[5]</span>How to Obtain the Field Guide</h2>
+
+      <p class="sources reveal" style="margin-top:44px">A hard copy printed on parchment paper and digital copies are available for purchase on-line. The price for a printed and mailed parchment paper <em>Field Guide</em> is $35.00; and the price for a digital <em>Field Guide</em> sent to the purchaser&rsquo;s Email Address is $25.00.</p>
+
+      <div class="prices reveal">
+        <div class="price">
+          <div class="price-amt">$35.00</div>
+          <div class="price-lbl">Printed on parchment paper and mailed</div>
         </div>
-        <div class="reveal">
-          <p class="lede">The <em>Field Guide</em> is a straight forward neutral objective discussion of the facts, history, core concepts, and core beliefs of modern <em>New Age Thought</em> that are distilled into the <em>Pleiadian New Age Movement</em>. The primary purpose of the <em>Field Guide</em> is to bring structure and understanding to modern <em>New Age Thought</em> discourse and development.</p>
+        <div class="price">
+          <div class="price-amt">$25.00</div>
+          <div class="price-lbl">Digital, sent to the purchaser&rsquo;s Email Address</div>
         </div>
       </div>
 
-      <p class="sources reveal" style="margin-top:56px">The <em>Field Guide</em> was not written by the Founders. It is the result of third party scholarly research into the historic religious background of the current core concepts and beliefs of <em>New Age Thought</em> going back more than 5,000 years; as well as subsequent foundational historical background of <em>New Age Thought</em> over the past 75 years.</p>
-
-      <p class="sources reveal" style="margin-top:34px">The <em>Field Guide</em> clearly and succinctly explains these core concepts and core beliefs in an easily readable format that can be understood and considered by the reader; and thereby provide the reader a pathway to understand these core concepts and core beliefs from the perspective of adherents of modern <em>New Age Thought</em>.</p>
-
-      <p class="sources reveal" style="margin-top:34px">The <em>Field Guide</em> does not delve into contrarian or competing views of the subject matter presented. It does not seek to verify or dismiss concepts and beliefs of modern <em>New Age Thought</em>, it simply explains them.</p>
-
-      <p class="sources reveal" style="margin-top:34px">In order to illustrate the scope of the <em>Field Guide</em>, a copy of the <em>Table of Contents</em> of the <em>Field Guide</em> is provided below.</p>
-
-      <a class="buy-btn reveal" href="#contents" style="margin-top:44px">
-        Table of Contents
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
+      <p class="sources reveal" style="margin-top:44px">The Field Guide may be purchased by using a credit card ________ below.</p>
     </div>
   </section>
 
-  <!-- ============ TABLE OF CONTENTS ============ -->
-  <section class="doc" id="contents" style="padding-top:0">
+  <!-- ============ [6] CONTACT INFORMATION ============ -->
+  <section class="doc" id="contact" style="padding-top:0">
     <div class="doc-inner">
       <div class="rule"></div>
-      <div class="label">003 / Table of Contents</div>
-      <h2 class="h2" style="margin-top:10px">Table of Contents</h2>
+      <h2 class="sec-h reveal"><span class="n">[6]</span>Contact Information</h2>
 
-      <ul class="toc">
-        <li class="reveal"><span class="mk">A.</span><span class="ti">INTRODUCTION</span><span class="ds"></span><span class="pp"></span>
-          <ol class="sub">
-            <li><b>1.</b>Purpose of Guide</li>
-            <li><b>2.</b>New Age Theology in General</li>
-            <li><b>3.</b>Pleiadian New Age Movement Theology &ndash; Distillation of Core Concepts and Beliefs of Modern New Age Thought</li>
-          </ol>
-        </li>
-        <li class="reveal"><span class="mk">B.</span><span class="ti">ALIEN SPECIES BASED HUMAN ORIGIN STORY OF THE PLEIADIAN NEW AGE MOVEMENT</span><span class="ds"></span><span class="pp"></span>
-          <ol class="sub">
-            <li><b>1.</b>Anunnaki</li>
-            <li><b>2.</b>Reptilians</li>
-            <li><b>3.</b>Pleiadians</li>
-            <li><b>4.</b>War Between the Anunnaki and the Pleiadians over Control of Earth; After the War</li>
-            <li><b>5.</b>Galactic Federation of Light</li>
-            <li><b>6.</b>Federation Moon Base</li>
-            <li><b>7.</b>Russia / Ukraine Conflict</li>
-            <li><b>8.</b>Greys and Mantis Alien Species</li>
-            <li><b>9.</b>11 Oumuamua and 31 Atlas; Mars Bases; US Space Force</li>
-            <li><b>10.</b>Inner / Hallow Earth</li>
-          </ol>
-        </li>
-        <li class="reveal"><span class="mk">C.</span><span class="ti">MERGING ORIGIN STORY WITH NEW AGE THEOLOGY</span><span class="ds"></span><span class="pp"></span>
-          <ol class="sub">
-            <li><b>1.</b>Ultimate Source</li>
-            <li><b>2.</b>New Age View of Pleiadians</li>
-            <li><b>3.</b>Starseeds</li>
-            <li><b>4.</b>Pleiadian Council of Light; Soul Contracts; Chosen Ones &ndash; Two Meanings</li>
-            <li><b>5.</b>Reincarnation</li>
-            <li><b>6.</b>Karma; Karmic Council</li>
-            <li><b>7.</b>GAIA Concept</li>
-            <li><b>8.</b>Equalization of the Forces of Divine Femininity and Divine Masculinity</li>
-            <li><b>9.</b>Palmistry</li>
-            <li><b>10.</b>Rapture</li>
-            <li><b>11.</b>Vortexes, Portals, Crystals, Dimensions of Reality, Frequencies</li>
-            <li><b>12.</b>Matrix</li>
-          </ol>
-        </li>
-        <li class="reveal"><span class="mk">D.</span><span class="ti">INCORPORATION OF GNOSTIC CONCEPTS INTO PLEIADIAN NEW AGE MOVEMENT THEOLOGY</span><span class="ds"></span><span class="pp"></span>
-          <ol class="sub">
-            <li><b>1.</b>Introduction</li>
-            <li><b>2.</b>Gnostic Cosmology: Monad, Aeons, Pleroma, Sophia, Demiurge, Archons</li>
-            <li><b>3.</b>Origin of the Term &ldquo;Demiurge&rdquo;</li>
-            <li><b>4.</b>Biblical and Christian Based Concepts</li>
-          </ol>
-        </li>
-        <li class="reveal"><span class="mk">E.</span><span class="ti">ADDITIONAL CONCEPTS INCORPORATED INTO THE PLEIADIAN NEW AGE MOVEMENT</span><span class="ds"></span><span class="pp"></span>
-        </li>
-        <li class="reveal"><span class="mk">F.</span><span class="ti">EPILOGUE</span><span class="ds"></span><span class="pp"></span>
-        </li>
-      </ul>
-
-      <p class="sources reveal" style="margin-top:56px">This <em>Field Guide</em> is just the First Edition, and the start of something far bigger. In time, the <em>Field Guide</em> will be expanded to provide clarification and additional important information and developments in <em>New Age Thought</em>. Announcements of new Editions of the <em>Field Guide</em> will be made to people who have bought the First Edition and people who visit the <em>PNAM Website</em>.</p>
-    </div>
-  </section>
-
-  <!-- ============ HOW TO OBTAIN THE FIELD GUIDE ============ -->
-  <section class="doc" id="get" style="padding-top:0">
-    <div class="doc-inner">
-      <div class="rule"></div>
-      <div class="label">004 / How to Obtain the Field Guide</div>
-      <div class="buy reveal">
-        <h2 class="h2">How to Obtain the Field Guide</h2>
-        <p class="placeholder">[Fill in explanation of how one buys a copy of the 1<sup>st</sup> Edition of the Field Guide.]</p>
-        <p class="placeholder">[The Mechanics to provide for sales needs to be set up within the Website.]</p>
-      </div>
+      <p class="sources reveal" style="margin-top:44px">Comments to the Website and Field Guide, and inquiries by vendors may be Emailed to PNAM ____.COM; or mailed to P.O. Box ____, Las Vegas, Nevada ______. Once the Website is able to provide a New Age Community Chat Room (?) for a New</p>
 
       <footer>
         <div class="rule"></div>
@@ -1685,7 +1695,7 @@ main#top{position:relative}
 /* Sticky stacking cards: earlier cards scale down as later ones arrive.
    Vanilla equivalent of framer-motion useScroll + useTransform. */
 (function () {
-  var section = document.getElementById('concepts'),
+  var section = document.getElementById('contents'),
       cards   = document.querySelectorAll('[data-pj-card]');
   if (!section || !cards.length) return;
 
