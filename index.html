@@ -8,7 +8,7 @@
 <meta name="description" content="Bringing order out of the chaos of modern New Age Thought. The Pleiadian New Age Movement is an ongoing hub for articles, essays, a bookstore, a shop, events and discourse, and the home of the Field Guide to the Origin and Spiritual Concepts of the Pleiadian New Age Movement Theology.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&family=Barlow+Semi+Condensed:wght@500;600&display=block" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -384,16 +384,17 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   font-weight:400;
   font-size:clamp(23px,3.1vw,44px);
   line-height:1.14; letter-spacing:0;
-  color:#F6EEDC;
+  color:var(--brass);
   -webkit-text-fill-color:currentColor;
   background:none;
-  text-transform:none;
+  text-transform:uppercase;
+  letter-spacing:.03em;
   margin:0;
 }
 .sec-h .n{
   font-family:'Space Mono',ui-monospace,monospace;
   font-size:.42em; letter-spacing:.10em;
-  color:var(--brass); margin-right:.55em;
+  color:var(--paper-dim); margin-right:.55em;
   vertical-align:.16em;
 }
 .pj-head .sec-h{text-align:center}
@@ -418,10 +419,30 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   font-size:14px; line-height:1.6; color:var(--paper-dim);
 }
 
+/* tablet landscape: five links plus the button need a tighter bar */
+@media(min-width:621px) and (max-width:1160px){
+  .brand-txt{font-size:15px}
+  .nav-links{gap:clamp(10px,1.4vw,18px)}
+  .nav-links a{font-size:12px;letter-spacing:.08em}
+  .nav-cta{font-size:11.5px;padding:11px 14px;letter-spacing:.08em}
+}
+
+/* text left, art right, as in Section 1 */
+.sec-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+@media(min-width:900px){.sec-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:64px}}
+.sec-art{
+  position:relative;overflow:hidden;border-radius:28px;
+  border:1px solid rgba(192,138,62,.28);
+  aspect-ratio:4/5;background:var(--ink-deep);
+}
+@media(min-width:900px){.sec-art{position:sticky;top:96px}}
+.sec-art-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
 .bullets{list-style:none;margin-top:52px;display:grid;gap:26px;max-width:86ch}
 .bullets li{
   position:relative;padding-left:34px;
   font-size:clamp(18px,1.4vw,20px);line-height:1.75;font-weight:300;color:var(--paper-dim);
+  text-align:justify;hyphens:auto;
 }
 .bullets li::before{
   content:'';position:absolute;left:2px;top:.62em;
@@ -433,10 +454,10 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
 .pj-toc{list-style:none;margin-top:16px;display:grid;gap:7px 26px}
 @media(min-width:720px){.pj-toc{grid-template-columns:1fr 1fr}}
 .pj-toc li{
-  font-family:'Space Mono',ui-monospace,monospace;
-  font-size:13px;line-height:1.5;font-weight:400;color:var(--paper-dim);
+  font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;
+  font-size:17px;line-height:1.45;font-weight:500;color:var(--paper);
 }
-.pj-toc li b{color:var(--brass);font-weight:400;margin-right:7px}
+.pj-toc li b{color:var(--brass);font-weight:600;margin-right:8px}
 
 .placeholder{
   font-family:'Space Mono',ui-monospace,monospace;
@@ -523,7 +544,7 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   line-height:1.7;color:var(--paper-dim)
 }
 
-.sources{font-size:clamp(18px,1.4vw,20px);line-height:2;font-weight:300;color:var(--paper-dim);max-width:82ch}
+.sources{font-size:clamp(18px,1.4vw,20px);line-height:2;font-weight:300;color:var(--paper-dim);max-width:82ch;text-align:justify;hyphens:auto}
 .sources em{color:#F6EEDC;font-style:italic}
 
 .faq{display:grid;grid-template-columns:1fr;gap:34px 56px;margin-top:8px}
@@ -799,6 +820,7 @@ footer{padding-top:74px}
   color:rgba(255,255,255,.6);
   font-size:18px; line-height:1.6;
   margin-bottom:28px; max-width:32rem;
+  text-align:justify; hyphens:auto;
 }
 .eq-hero-btns{display:flex; flex-wrap:wrap; align-items:center; gap:12px}
 .eq-hero-btns .eq-btn{font-size:18px; padding:14px 28px}
@@ -856,6 +878,7 @@ footer{padding-top:74px}
 }
 @media(min-width:640px){ .pj-card{border-radius:50px; padding:24px; gap:32px} }
 @media(min-width:768px){ .pj-card{border-radius:60px; padding:32px; gap:40px} }
+@media(min-width:1200px){ .pj-card{flex-direction:row; align-items:flex-start; gap:48px} .pj-card .pj-top{flex:1 1 54%; flex-direction:column; align-items:flex-start} .pj-card .pj-grid{flex:1 1 46%} }
 
 /* --- card header --- */
 .pj-top{
@@ -888,8 +911,8 @@ footer{padding-top:74px}
   font-size:clamp(1rem, 2.2vw, 1.5rem);
 }
 .pj-name{
-  font-family:'Spectral',Georgia,serif;
-  font-weight:300; letter-spacing:.02em;
+  font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;
+  font-weight:600; letter-spacing:.01em;
   color:var(--paper);
   font-size:clamp(1.3rem, 2vw, 2rem);
 }
@@ -1444,6 +1467,8 @@ main#top{position:relative}
   <!-- ============ [2] PNAM WEBSITE ============ -->
   <section class="doc" id="website">
     <div class="doc-inner">
+      <div class="sec-grid">
+      <div class="sec-txt">
       <h2 class="sec-h reveal"><span class="n">[2]</span>PNAM Website</h2>
 
       <p class="sources reveal" style="margin-top:44px">The current <em>PNAM Website</em> is only the beginning. The <em>PNAM Website</em> will grow to provide additional information, connections, and opportunities for people visiting the <em>PNAM Website</em> as it grows in circulation and evolves in its scope of coverage of modern <em>New Age Thought</em>. In the near future, it is anticipated the <em>PNAM Website</em> will be expanded to provide some of the following benefits to its users:</p>
@@ -1459,6 +1484,9 @@ main#top{position:relative}
       </ul>
 
       <p class="sources reveal" style="margin-top:52px">There is no cost to accessing and using the <em>PNAM Website</em>. Funding for the <em>PNAM Website</em> will come from sales of its <em>Field Guide</em> (discussed below) and additional products <em>PNAM</em> may later make available on it's Website.</p>
+      </div>
+      <aside class="sec-art reveal"><video class="sec-art-media" autoplay muted loop playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_135039_b04d00db-6ee2-4e2a-a7f5-b2dfd3d24fd2.mp4" aria-label="Ambient background video."></video></aside>
+    </div>
     </div>
   </section>
 
@@ -1466,6 +1494,8 @@ main#top{position:relative}
   <section class="doc" id="guide" style="padding-top:0">
     <div class="doc-inner">
       <div class="rule"></div>
+      <div class="sec-grid">
+      <div class="sec-txt">
       <h2 class="sec-h reveal"><span class="n">[3]</span>Field Guide to PNAM</h2>
 
       <p class="sources reveal" style="margin-top:44px">The <em>Field Guide</em> is a straight forward neutral objective discussion of the facts, history, core concepts, and core beliefs of modern <em>New Age Thought</em> that are distilled into the <em>Pleiadian New Age Movement</em>. The primary purpose of the <em>Field Guide</em> is to bring structure and understanding to modern <em>New Age Thought</em> discourse and development.</p>
@@ -1479,13 +1509,16 @@ main#top{position:relative}
       <p class="sources reveal" style="margin-top:34px">This <em>Field Guide</em> is just the First Edition, and the start of something far bigger. In time, the <em>Field Guide</em> will be expanded to provide clarification and additional important information and developments in <em>New Age Thought</em>. Announcements of new Editions of the <em>Field Guide</em> will be made to people who have bought the First Edition and people who visit the <em>PNAM Website</em>.</p>
 
       <p class="sources reveal" style="margin-top:34px">In order to illustrate the scope of the <em>Field Guide</em>, a copy of the <em>Table of Contents</em> of the <em>Field Guide</em> is provided below.</p>
+      </div>
+      <aside class="sec-art reveal"><video class="sec-art-media" autoplay muted loop playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4" aria-label="Ambient background video."></video></aside>
+    </div>
     </div>
   </section>
 
   <!-- ============ [4] TABLE OF CONTENTS ============ -->
   <section class="pj-section" id="contents">
     <div class="pj-head">
-      <h2 class="sec-h reveal"><span class="n">[4]</span>Table of Contents</h2>
+      <h2 class="sec-h reveal"><span class="n">[4]</span>Table of Contents &ndash; Field Guide</h2>
     </div>
     <div id="pj-stack">
       <div class="pj-sticky">
@@ -1609,6 +1642,8 @@ main#top{position:relative}
   <!-- ============ [5] HOW TO OBTAIN THE FIELD GUIDE ============ -->
   <section class="doc" id="obtain">
     <div class="doc-inner">
+      <div class="sec-grid">
+      <div class="sec-txt">
       <h2 class="sec-h reveal"><span class="n">[5]</span>How to Obtain the Field Guide</h2>
 
       <p class="sources reveal" style="margin-top:44px">A hard copy printed on parchment paper and digital copies are available for purchase on-line. The price for a printed and mailed parchment paper <em>Field Guide</em> is $35.00; and the price for a digital <em>Field Guide</em> sent to the purchaser&rsquo;s Email Address is $25.00.</p>
@@ -1625,6 +1660,9 @@ main#top{position:relative}
       </div>
 
       <p class="sources reveal" style="margin-top:44px">The Field Guide may be purchased by using a credit card ________ below.</p>
+      </div>
+      <aside class="sec-art reveal"><img class="sec-art-media" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/dd434947-66e8-4157-9a51-e69b6fab4913.webp" alt="A luminous rectangular portal standing in a valley at twilight." loading="lazy" decoding="async"></aside>
+    </div>
     </div>
   </section>
 
@@ -1632,9 +1670,14 @@ main#top{position:relative}
   <section class="doc" id="contact" style="padding-top:0">
     <div class="doc-inner">
       <div class="rule"></div>
+      <div class="sec-grid">
+      <div class="sec-txt">
       <h2 class="sec-h reveal"><span class="n">[6]</span>Contact Information</h2>
 
       <p class="sources reveal" style="margin-top:44px">Comments to the Website and Field Guide, and inquiries by vendors may be Emailed to PNAM ____.COM; or mailed to P.O. Box ____, Las Vegas, Nevada ______. Once the Website is able to provide a New Age Community Chat Room (?) for a New</p>
+      </div>
+      <aside class="sec-art reveal"><img class="sec-art-media" src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async"></aside>
+    </div>
 
       <footer>
         <div class="rule"></div>
