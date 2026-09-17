@@ -43,6 +43,7 @@
   --brass:    #C08A3E;
   --brass-dim:rgba(192,138,62,.18);
   --signal:   #A22211;
+  --ice:      #D9E6F5;
 
   --c-nav:   rgba(237,228,208,.86);
   --c-head1: #F6EEDC;
@@ -385,8 +386,9 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   font-size:clamp(23px,3.1vw,44px);
   line-height:1.14; letter-spacing:0;
   color:var(--brass);
-  -webkit-text-fill-color:currentColor;
-  background:none;
+  background:linear-gradient(180deg,#F1D8A6 0%,var(--brass) 58%,#9C6E2C 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
   text-transform:uppercase;
   letter-spacing:.03em;
   margin:0;
@@ -394,7 +396,7 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
 .sec-h .n{
   font-family:'Space Mono',ui-monospace,monospace;
   font-size:.42em; letter-spacing:.10em;
-  color:var(--paper-dim); margin-right:.55em;
+  color:var(--paper-dim); -webkit-text-fill-color:var(--paper-dim); margin-right:.55em;
   vertical-align:.16em;
 }
 .pj-head .sec-h{text-align:center}
@@ -452,11 +454,12 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
 .bullets li em{color:#F6EEDC;font-style:italic}
 
 .pj-toc{list-style:none;margin-top:16px;display:grid;gap:7px 26px}
-@media(min-width:720px){.pj-toc{grid-template-columns:1fr 1fr}}
 .pj-toc li{
   font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;
   font-size:17px;line-height:1.45;font-weight:500;color:var(--paper);
 }
+.pj-more{margin-top:26px;display:grid;gap:18px;padding-top:22px;border-top:1px solid rgba(192,138,62,.22)}
+.pj-more .pj-cat{display:block;margin-bottom:6px}
 .pj-toc li b{color:var(--brass);font-weight:600;margin-right:8px}
 
 .placeholder{
@@ -913,7 +916,7 @@ footer{padding-top:74px}
 .pj-name{
   font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;
   font-weight:600; letter-spacing:.01em;
-  color:var(--paper);
+  color:var(--ice);
   font-size:clamp(1.3rem, 2vw, 2rem);
 }
 .pj-sub{
@@ -1593,6 +1596,10 @@ main#top{position:relative}
                 <div class="pj-cat">D</div>
                 <div class="pj-name">INCORPORATION OF GNOSTIC CONCEPTS INTO PLEIADIAN NEW AGE MOVEMENT THEOLOGY</div>
                 <ol class="pj-toc"><li><b>1.</b>Introduction</li><li><b>2.</b>Gnostic Cosmology: Monad, Aeons, Pleroma, Sophia, Demiurge, Archons</li><li><b>3.</b>Origin of the Term &ldquo;Demiurge&rdquo;</li><li><b>4.</b>Biblical and Christian Based Concepts</li></ol>
+                <div class="pj-more">
+                  <div><span class="pj-cat">E</span><div class="pj-name">ADDITIONAL CONCEPTS INCORPORATED INTO THE PLEIADIAN NEW AGE MOVEMENT</div></div>
+                  <div><span class="pj-cat">F</span><div class="pj-name">EPILOGUE</div></div>
+                </div>
               </div>
             </div>
             <a class="pj-live" href="#obtain">Get the Guide</a>
@@ -1605,34 +1612,6 @@ main#top{position:relative}
             <div class="pj-col2">
               <img src="img/gnostic-01.webp" alt="Seven numbered spheres nested inside one another, descending from golden light at the top through a dark sphere to Earth below." loading="lazy" decoding="async">
             </div>
-          </div>
-        </article>
-      </div>
-      <div class="pj-sticky">
-        <article class="pj-card" data-pj-card style="top:112px">
-          <div class="pj-top">
-            <div class="pj-left">
-              <div class="pj-num">05</div>
-              <div class="pj-meta">
-                <div class="pj-cat">E</div>
-                <div class="pj-name">ADDITIONAL CONCEPTS INCORPORATED INTO THE PLEIADIAN NEW AGE MOVEMENT</div>
-              </div>
-            </div>
-            <a class="pj-live" href="#obtain">Get the Guide</a>
-          </div>
-        </article>
-      </div>
-      <div class="pj-sticky">
-        <article class="pj-card" data-pj-card style="top:140px">
-          <div class="pj-top">
-            <div class="pj-left">
-              <div class="pj-num">06</div>
-              <div class="pj-meta">
-                <div class="pj-cat">F</div>
-                <div class="pj-name">EPILOGUE</div>
-              </div>
-            </div>
-            <a class="pj-live" href="#obtain">Get the Guide</a>
           </div>
         </article>
       </div>
