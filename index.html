@@ -44,6 +44,7 @@
   --brass-dim:rgba(192,138,62,.18);
   --signal:   #A22211;
   --ice:      #D9E6F5;
+  --page-x:   max(22px, 6vw, calc((100vw - 1180px) / 2));
 
   --c-nav:   rgba(237,228,208,.86);
   --c-head1: #F6EEDC;
@@ -230,21 +231,26 @@ h1{
   letter-spacing:var(--tracking-tight);
   text-shadow:0 calc(2 * var(--k)) calc(38 * var(--k)) rgba(6,8,15,.55);
 }
-h1 .l1{display:block;color:var(--c-head1)}
-h1 .l2{display:block;color:var(--c-head2);font-style:italic}
+h1 .l1{display:block;color:var(--ice);text-transform:uppercase}
+h1 .l2,.sub{
+  display:block;font-style:normal;
+  background:linear-gradient(180deg,#F1D8A6 0%,var(--brass) 58%,#9C6E2C 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--brass);
+}
 h1 .l1,h1 .l2{padding-bottom:.06em}
 h1 .l2{font-size:.82em}
 h1 .l1>span,h1 .l2>span{display:block}
 
 .sub{
   margin-top:var(--gap-sub);
+  font-family:'Righteous','Trebuchet MS',sans-serif;
   font-size:var(--fs-sub);
-  font-weight:300;
+  font-weight:400;
   line-height:var(--leading-body);
   letter-spacing:0;
   color:var(--c-sub);
   max-width:min(94vw, 58ch);
-  text-shadow:0 calc(1 * var(--k)) calc(20 * var(--k)) rgba(6,8,15,.5);
+  text-shadow:none;
 }
 
 .cta{
@@ -417,8 +423,8 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
 }
 .price-lbl{
   margin-top:12px;
-  font-family:'Spectral',Georgia,serif;
-  font-size:clamp(18px,1.4vw,20px); line-height:1.6; font-weight:300; color:var(--paper-dim);
+  font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:18px; line-height:1.6; font-weight:400; color:rgba(255,255,255,.6);
 }
 
 /* tablet landscape: five links plus the button need a tighter bar */
@@ -428,6 +434,13 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   .nav-links a{font-size:12px;letter-spacing:.08em}
   .nav-cta{font-size:11.5px;padding:11px 14px;letter-spacing:.08em}
 }
+
+/* Sections 2 and 3: video behind the text, weighted to the right, like Section 1 */
+.doc-meld{position:relative;overflow:hidden}
+.meld-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;z-index:0}
+.meld-veil{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,var(--ink) 0%,rgba(10,12,31,.92) 38%,rgba(10,12,31,.55) 62%,rgba(10,12,31,.25) 100%)}
+.doc-meld .doc-inner{position:relative;z-index:2}
 
 /* text left, art right, as in Section 1 */
 .sec-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
@@ -440,10 +453,11 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
 @media(min-width:900px){.sec-art{position:sticky;top:96px}}
 .sec-art-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 
-.bullets{list-style:none;margin-top:52px;display:grid;gap:26px;max-width:86ch}
+.bullets{list-style:none;margin-top:52px;display:grid;gap:26px;max-width:62ch}
 .bullets li{
   position:relative;padding-left:34px;
-  font-size:clamp(18px,1.4vw,20px);line-height:1.75;font-weight:300;color:var(--paper-dim);
+  font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:18px;line-height:1.6;font-weight:400;color:rgba(255,255,255,.6);
   text-align:justify;hyphens:auto;
 }
 .bullets li::before{
@@ -451,7 +465,7 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   width:9px;height:9px;transform:rotate(45deg);
   background:var(--brass);
 }
-.bullets li em{color:#F6EEDC;font-style:italic}
+.bullets li em{font-style:italic}
 
 .pj-toc{list-style:none;margin-top:16px;display:grid;gap:7px 26px}
 .pj-toc li{
@@ -547,8 +561,8 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   line-height:1.7;color:var(--paper-dim)
 }
 
-.sources{font-size:clamp(18px,1.4vw,20px);line-height:2;font-weight:300;color:var(--paper-dim);max-width:82ch;text-align:justify;hyphens:auto}
-.sources em{color:#F6EEDC;font-style:italic}
+.sources{font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:18px;line-height:1.6;font-weight:400;color:rgba(255,255,255,.6);max-width:62ch;text-align:justify;hyphens:auto}
+.sources em{font-style:italic}
 
 .faq{display:grid;grid-template-columns:1fr;gap:34px 56px;margin-top:8px}
 @media(min-width:840px){.faq{grid-template-columns:1fr 1fr}}
@@ -813,16 +827,14 @@ footer{padding-top:74px}
 
 /* --- hero copy --- */
 .eq-hero{
-  position:relative; z-index:20;
-  padding:clamp(96px,14vh,150px) 24px 40px;
-  max-width:42rem;
+  position:relative; z-index:20; width:100%;
+  padding:clamp(96px,14vh,150px) var(--page-x) 64px;
 }
-@media(min-width:640px){ .eq-hero{padding:clamp(96px,14vh,150px) 48px 64px} }
 .eq-hero h2{ margin-bottom:16px; }
 .eq-hero p{
   color:rgba(255,255,255,.6);
   font-size:18px; line-height:1.6;
-  margin-bottom:28px; max-width:32rem;
+  margin-bottom:28px; max-width:62ch;
   text-align:justify; hyphens:auto;
 }
 .eq-hero-btns{display:flex; flex-wrap:wrap; align-items:center; gap:12px}
@@ -834,15 +846,15 @@ footer{padding-top:74px}
 .pj-section{
   position:relative; z-index:10;
   background:var(--ink);
-  padding:0 20px;
+  padding:0 var(--page-x);
   border-radius:40px 40px 0 0;
   margin-top:-40px;
 }
 @media(min-width:640px){
-  .pj-section{padding:0 32px; border-radius:50px 50px 0 0; margin-top:-48px}
+  .pj-section{border-radius:50px 50px 0 0; margin-top:-48px}
 }
 @media(min-width:768px){
-  .pj-section{padding:0 40px; border-radius:60px 60px 0 0; margin-top:-56px}
+  .pj-section{border-radius:60px 60px 0 0; margin-top:-56px}
 }
 
 .pj-head{
@@ -881,6 +893,8 @@ footer{padding-top:74px}
 }
 @media(min-width:640px){ .pj-card{border-radius:50px; padding:24px; gap:32px} }
 @media(min-width:768px){ .pj-card{border-radius:60px; padding:32px; gap:40px} }
+.pj-card{padding-left:0; padding-right:0; border-left:0; border-right:0; border-radius:0!important; max-width:none}
+.pj-head{padding-left:0}
 @media(min-width:1200px){ .pj-card{flex-direction:row; align-items:flex-start; gap:48px} .pj-card .pj-top{flex:1 1 54%; flex-direction:column; align-items:flex-start} .pj-card .pj-grid{flex:1 1 46%} }
 
 /* --- card header --- */
@@ -890,11 +904,11 @@ footer{padding-top:74px}
 @media(min-width:1200px){
   .pj-top{flex-direction:row; align-items:center; justify-content:space-between; gap:16px}
 }
-.pj-left{display:flex; align-items:flex-start; gap:24px}
-@media(min-width:1200px){ .pj-left{align-items:center} }
+.pj-left{display:flex; flex-direction:column; align-items:flex-start; gap:12px}
+.pj-num{display:none}
+.pj-meta{position:relative; z-index:1}
 .pj-num{line-height:.85}
-@media(min-width:640px){ .pj-left{gap:32px} }
-@media(min-width:768px){ .pj-left{gap:40px} }
+
 .pj-num{
   font-family:'Righteous','Trebuchet MS',sans-serif;
   font-variation-settings:'SOFT' 0,'WONK' 1;
@@ -1438,7 +1452,7 @@ main#top{position:relative}
     <div class="stack">
       <h1>
         <span class="l1"><span>Pleiadian New Age Movement</span></span>
-        <span class="l2"><span>&ndash; Bringing Order Out Of The Chaos &ndash;</span></span>
+        <span class="l2"><span>&ndash; Bringing Order Out of the Chaos &ndash;</span></span>
       </h1>
       <p class="sub">Finally, there is one Movement providing structure and clarity to modern <em>New Age Thought</em>!</p>
       <a class="cta" href="#back-story">
@@ -1458,7 +1472,7 @@ main#top{position:relative}
       <h2 class="sec-h"><span class="n">[1]</span>Back Story</h2>
       <p>A multitude of New Age groups and writers exist with a great diversity in concepts and beliefs of <em>New Age Thought</em> extending over 75 years of time. Navigating through and making sense of <em>New Age Thought</em> can be confusing and at times chaotic due to the diversity and contradiction in many aspects of the varied concepts and belief systems of the various New Age groups over the years.</p>
       <p>In response to this divergence, confusion, and misunderstandings, two New Age thinkers, Danny Thomas and Victoria Eslinger, have sought to identify and distill the core concepts and core beliefs common to modern <em>New Age Thought</em> into one core New Age Movement: the <em>Pleiadian New Age Movement (&ldquo;PNAM&rdquo;)</em>.</p>
-      <p>In these efforts to bring structure and clarity to modern <em>New Age Thought</em> the Founders commissioned: (1) the creation of this PNAM Website to bring New Age thinkers together and provide a forum for interaction and discourse; and (2) the preparation of a comprehensive <em>Field Guide</em> explaining the background and purposes of modern <em>New Age Thought</em> in general and of the PNAM Movement in particular.</p>
+      <p>In these efforts to bring structure and clarity to modern <em>New Age Thought</em> the Founders commissioned: (1) the creation of this PNAM Website to bring New Age thinkers together and provide a forum for interaction and discourse; and (2) the preparation of a comprehensive <em>Field Guide</em> explaining the background and purposes of modern <em>New Age Thought</em> in general and of the <em>Pleiadian New Age Movement</em> in particular.</p>
       <p>This important <em>Field Guide</em> is titled the <strong>&ldquo;Guide to the Origin and Spiritual Concepts of the Pleiadian New Age Movement Theology&rdquo;</strong>. The First Edition of the <em>Field Guide</em> is available to the public at a small cost to help fund this Website, explained below.</p>
       <div class="eq-hero-btns">
         <a class="eq-btn eq-btn-solid" href="#website">PNAM Website</a>
@@ -1468,10 +1482,10 @@ main#top{position:relative}
   </section>
 
   <!-- ============ [2] PNAM WEBSITE ============ -->
-  <section class="doc" id="website">
+  <section class="doc doc-meld" id="website">
+    <video class="meld-bg" autoplay muted loop playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_135039_b04d00db-6ee2-4e2a-a7f5-b2dfd3d24fd2.mp4" aria-label="Ambient background video."></video>
+    <div class="meld-veil"></div>
     <div class="doc-inner">
-      <div class="sec-grid">
-      <div class="sec-txt">
       <h2 class="sec-h reveal"><span class="n">[2]</span>PNAM Website</h2>
 
       <p class="sources reveal" style="margin-top:44px">The current <em>PNAM Website</em> is only the beginning. Over time the <em>PNAM Website</em> will provide additional information, connections, and opportunities for people visiting the <em>PNAM Website</em> as it grows in circulation and evolves in its scope of coverage of modern <em>New Age Thought</em>. In the near future, it is anticipated the <em>PNAM Website</em> will be expanded to provide some of the following benefits to its users:</p>
@@ -1487,18 +1501,14 @@ main#top{position:relative}
       </ul>
 
       <p class="sources reveal" style="margin-top:52px">There is no cost to accessing and using the <em>PNAM Website</em>. Funding for the <em>PNAM Website</em> will come from sales of its <em>Field Guide</em> (discussed below) and additional products <em>PNAM</em> may later make available on it's Website.</p>
-      </div>
-      <aside class="sec-art reveal"><video class="sec-art-media" autoplay muted loop playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_135039_b04d00db-6ee2-4e2a-a7f5-b2dfd3d24fd2.mp4" aria-label="Ambient background video."></video></aside>
-    </div>
     </div>
   </section>
 
   <!-- ============ [3] FIELD GUIDE TO PNAM ============ -->
-  <section class="doc" id="guide" style="padding-top:0">
+  <section class="doc doc-meld" id="guide" style="padding-top:0">
+    <video class="meld-bg" autoplay muted loop playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4" aria-label="Ambient background video."></video>
+    <div class="meld-veil"></div>
     <div class="doc-inner">
-      <div class="rule"></div>
-      <div class="sec-grid">
-      <div class="sec-txt">
       <h2 class="sec-h reveal"><span class="n">[3]</span>Field Guide to PNAM</h2>
 
       <p class="sources reveal" style="margin-top:44px">The <em>Field Guide</em> is a straight forward neutral objective discussion of the facts, history, core concepts, and core beliefs of modern <em>New Age Thought</em> that are distilled into the <em>Pleiadian New Age Movement</em>. The primary purpose of the <em>Field Guide</em> is to bring structure and understanding to modern <em>New Age Thought</em> discourse and development.</p>
@@ -1512,9 +1522,6 @@ main#top{position:relative}
       <p class="sources reveal" style="margin-top:34px">This <em>Field Guide</em> is just the First Edition, and the start of something far bigger. In time, the <em>Field Guide</em> will be expanded to provide clarification and additional important information and developments in <em>New Age Thought</em>. Announcements of new Editions of the <em>Field Guide</em> will be made to people who have bought the First Edition and people who visit the <em>PNAM Website</em>.</p>
 
       <p class="sources reveal" style="margin-top:34px">In order to illustrate the scope of the <em>Field Guide</em>, a copy of the <em>Table of Contents</em> of the <em>Field Guide</em> is provided below.</p>
-      </div>
-      <aside class="sec-art reveal"><video class="sec-art-media" autoplay muted loop playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4" aria-label="Ambient background video."></video></aside>
-    </div>
     </div>
   </section>
 
@@ -1530,12 +1537,11 @@ main#top{position:relative}
             <div class="pj-left">
               <div class="pj-num">01</div>
               <div class="pj-meta">
-                <div class="pj-cat">A</div>
+                <div class="pj-cat">01 &nbsp;A.</div>
                 <div class="pj-name">INTRODUCTION</div>
                 <ol class="pj-toc"><li><b>1.</b>Purpose of Guide</li><li><b>2.</b>New Age Theology in General</li><li><b>3.</b>Pleiadian New Age Movement Theology &ndash; Distillation of Core Concepts and Beliefs of Modern New Age Thought</li></ol>
               </div>
             </div>
-            <a class="pj-live" href="#obtain">Get the Guide</a>
           </div>
         </article>
       </div>
@@ -1545,12 +1551,11 @@ main#top{position:relative}
             <div class="pj-left">
               <div class="pj-num">02</div>
               <div class="pj-meta">
-                <div class="pj-cat">B</div>
+                <div class="pj-cat">02 &nbsp;B.</div>
                 <div class="pj-name">ALIEN SPECIES BASED HUMAN ORIGIN STORY OF THE PLEIADIAN NEW AGE MOVEMENT</div>
                 <ol class="pj-toc"><li><b>1.</b>Anunnaki</li><li><b>2.</b>Reptilians</li><li><b>3.</b>Pleiadians</li><li><b>4.</b>War Between the Anunnaki and the Pleiadians over Control of Earth; After the War</li><li><b>5.</b>Galactic Federation of Light</li><li><b>6.</b>Federation Moon Base</li><li><b>7.</b>Russia / Ukraine Conflict</li><li><b>8.</b>Greys and Mantis Alien Species</li><li><b>9.</b>11 Oumuamua and 31 Atlas; Mars Bases; US Space Force</li><li><b>10.</b>Inner / Hallow Earth</li></ol>
               </div>
             </div>
-            <a class="pj-live" href="#obtain">Get the Guide</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
@@ -1569,12 +1574,11 @@ main#top{position:relative}
             <div class="pj-left">
               <div class="pj-num">03</div>
               <div class="pj-meta">
-                <div class="pj-cat">C</div>
+                <div class="pj-cat">03 &nbsp;C.</div>
                 <div class="pj-name">MERGING ORIGIN STORY WITH NEW AGE THEOLOGY</div>
                 <ol class="pj-toc"><li><b>1.</b>Ultimate Source</li><li><b>2.</b>New Age View of Pleiadians</li><li><b>3.</b>Starseeds</li><li><b>4.</b>Pleiadian Council of Light; Soul Contracts; Chosen Ones &ndash; Two Meanings</li><li><b>5.</b>Reincarnation</li><li><b>6.</b>Karma; Karmic Council</li><li><b>7.</b>GAIA Concept</li><li><b>8.</b>Equalization of the Forces of Divine Femininity and Divine Masculinity</li><li><b>9.</b>Palmistry</li><li><b>10.</b>Rapture</li><li><b>11.</b>Vortexes, Portals, Crystals, Dimensions of Reality, Frequencies</li><li><b>12.</b>Matrix</li></ol>
               </div>
             </div>
-            <a class="pj-live" href="#obtain">Get the Guide</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
@@ -1593,7 +1597,7 @@ main#top{position:relative}
             <div class="pj-left">
               <div class="pj-num">04</div>
               <div class="pj-meta">
-                <div class="pj-cat">D</div>
+                <div class="pj-cat">04 &nbsp;D.</div>
                 <div class="pj-name">INCORPORATION OF GNOSTIC CONCEPTS INTO PLEIADIAN NEW AGE MOVEMENT THEOLOGY</div>
                 <ol class="pj-toc"><li><b>1.</b>Introduction</li><li><b>2.</b>Gnostic Cosmology: Monad, Aeons, Pleroma, Sophia, Demiurge, Archons</li><li><b>3.</b>Origin of the Term &ldquo;Demiurge&rdquo;</li><li><b>4.</b>Biblical and Christian Based Concepts</li></ol>
                 <div class="pj-more">
@@ -1602,7 +1606,6 @@ main#top{position:relative}
                 </div>
               </div>
             </div>
-            <a class="pj-live" href="#obtain">Get the Guide</a>
           </div>
           <div class="pj-grid">
             <div class="pj-col1">
@@ -1638,7 +1641,7 @@ main#top{position:relative}
         </div>
       </div>
 
-      <p class="sources reveal" style="margin-top:44px">The Field Guide may be purchased by using a credit card ________ below.</p>
+      <p class="sources reveal" style="margin-top:44px">The <em>Field Guide</em> may be purchased by using a credit card ________ below.</p>
       </div>
       <aside class="sec-art reveal"><img class="sec-art-media" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/dd434947-66e8-4157-9a51-e69b6fab4913.webp" alt="A luminous rectangular portal standing in a valley at twilight." loading="lazy" decoding="async"></aside>
     </div>
@@ -1653,7 +1656,7 @@ main#top{position:relative}
       <div class="sec-txt">
       <h2 class="sec-h reveal"><span class="n">[6]</span>Contact Information</h2>
 
-      <p class="sources reveal" style="margin-top:44px">Comments to the Website and Field Guide, and inquiries by vendors may be Emailed to PNAM ____.COM; or mailed to P.O. Box ____, Las Vegas, Nevada ______. Once the Website is able to provide a New Age Community Chat Room (?) for a New</p>
+      <p class="sources reveal" style="margin-top:44px">Comments to the Website and <em>Field Guide</em>, and inquiries by vendors may be Emailed to PNAM ____.COM; or mailed to P.O. Box ____, Las Vegas, Nevada ______. Once the Website is able to provide a New Age Community Chat Room (?) for a New</p>
       </div>
       <aside class="sec-art reveal"><img class="sec-art-media" src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&amp;w=1280&amp;q=85" alt="" loading="lazy" decoding="async"></aside>
     </div>
