@@ -437,10 +437,12 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
 
 /* Sections 2 and 3: video behind the text, weighted to the right, like Section 1 */
 .doc-meld{position:relative;overflow:hidden}
-.meld-bg{position:absolute;inset:0 0 0 auto;width:66%;height:100%;object-fit:cover;object-position:50% 50%;z-index:0}
-@media(max-width:900px){.meld-bg{width:100%}}
+.meld-bg{position:absolute;inset:0 0 0 auto;width:44%;height:100%;object-fit:cover;object-position:var(--art-x,50%) 50%;z-index:0}
+@media(max-width:1100px){.meld-bg{width:60%}}
+@media(max-width:900px){.meld-bg{width:100%;object-position:50% 50%}}
 .meld-veil{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 30%,rgba(10,12,31,.86) 48%,rgba(10,12,31,.45) 70%,rgba(10,12,31,.18) 100%)}
+  background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 52%,rgba(10,12,31,.62) 60%,rgba(10,12,31,.16) 72%,transparent 84%)}
+@media(max-width:900px){.meld-veil{background:linear-gradient(90deg,var(--ink) 0%,rgba(10,12,31,.9) 55%,rgba(10,12,31,.7) 100%)}}
 .doc-meld .doc-inner{position:relative;z-index:2}
 
 /* text left, art right, as in Section 1 */
@@ -1488,7 +1490,7 @@ main#top{position:relative}
   </section>
 
   <!-- ============ [2] PNAM WEBSITE ============ -->
-  <section class="doc doc-meld" id="website">
+  <section class="doc doc-meld" id="website" style="--art-x:58%">
     <video class="meld-bg" autoplay muted playsinline preload="auto" onloadeddata="this.currentTime=2.5;this.pause()" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_135039_b04d00db-6ee2-4e2a-a7f5-b2dfd3d24fd2.mp4" aria-label="Ambient background video."></video>
     <div class="meld-veil"></div>
     <div class="doc-inner">
@@ -1511,7 +1513,7 @@ main#top{position:relative}
   </section>
 
   <!-- ============ [3] FIELD GUIDE TO PNAM ============ -->
-  <section class="doc doc-meld" id="guide" style="padding-top:0">
+  <section class="doc doc-meld" id="guide" style="--art-x:66%" style="padding-top:0">
     <video class="meld-bg" autoplay muted playsinline preload="auto" onloadeddata="this.currentTime=2.5;this.pause()" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4" aria-label="Ambient background video."></video>
     <div class="meld-veil"></div>
     <div class="doc-inner">
