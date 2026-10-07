@@ -437,12 +437,11 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
 
 /* Sections 2 and 3: video behind the text, weighted to the right, like Section 1 */
 .doc-meld{position:relative;overflow:hidden}
-.meld-bg{position:absolute;inset:0 0 0 auto;width:44%;height:100%;object-fit:cover;object-position:var(--art-x,50%) 50%;z-index:0}
-@media(max-width:1100px){.meld-bg{width:60%}}
-@media(max-width:900px){.meld-bg{width:100%;object-position:50% 50%}}
+.meld-bg{position:absolute;inset:0 0 0 auto;width:var(--art-w,44%);height:100%;object-fit:cover;object-position:var(--art-x,50%) 50%;z-index:0}
+@media(max-width:1100px){.meld-bg{width:100%;object-position:50% 50%}}
 .meld-veil{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 52%,rgba(10,12,31,.62) 60%,rgba(10,12,31,.16) 72%,transparent 84%)}
-@media(max-width:900px){.meld-veil{background:linear-gradient(90deg,var(--ink) 0%,rgba(10,12,31,.9) 55%,rgba(10,12,31,.7) 100%)}}
+  background:linear-gradient(90deg,var(--ink) 0%,var(--ink) var(--veil-solid,52%),rgba(10,12,31,.70) 60%,rgba(10,12,31,.20) 72%,transparent 86%)}
+@media(max-width:1100px){.meld-veil{background:linear-gradient(90deg,var(--ink) 0%,rgba(10,12,31,.9) 55%,rgba(10,12,31,.7) 100%)}}
 .doc-meld .doc-inner{position:relative;z-index:2}
 
 /* text left, art right, as in Section 1 */
@@ -456,7 +455,7 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
 @media(min-width:900px){.sec-art{position:sticky;top:96px}}
 .sec-art-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 
-.bullets{list-style:none;margin-top:52px;display:grid;gap:26px;max-width:62ch}
+.bullets{list-style:none;margin-top:52px;display:grid;gap:26px;max-width:56ch}
 .bullets li{
   position:relative;padding-left:34px;
   font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
@@ -564,7 +563,7 @@ a.pricenote:hover,a.pricenote:focus-visible{color:var(--paper);border-color:var(
   line-height:1.7;color:var(--paper-dim)
 }
 
-.sources{font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:18px;line-height:1.6;font-weight:400;color:rgba(255,255,255,.6);max-width:62ch;text-align:justify;hyphens:auto}
+.sources{font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:18px;line-height:1.6;font-weight:400;color:rgba(255,255,255,.6);max-width:56ch;text-align:justify;hyphens:auto}
 .sources em{font-style:italic}
 
 .faq{display:grid;grid-template-columns:1fr;gap:34px 56px;margin-top:8px}
@@ -842,7 +841,7 @@ footer{padding-top:74px}
 .eq-hero p{
   color:rgba(255,255,255,.6);
   font-size:18px; line-height:1.6;
-  margin-bottom:28px; max-width:62ch;
+  margin-bottom:28px; max-width:56ch;
   text-align:justify; hyphens:auto;
 }
 .eq-hero-btns{display:flex; flex-wrap:wrap; align-items:center; gap:12px}
@@ -1513,7 +1512,7 @@ main#top{position:relative}
   </section>
 
   <!-- ============ [3] FIELD GUIDE TO PNAM ============ -->
-  <section class="doc doc-meld" id="guide" style="--art-x:66%" style="padding-top:0">
+  <section class="doc doc-meld" id="guide" style="--art-x:44%;--art-w:56%;--veil-solid:50%;padding-top:0">
     <video class="meld-bg" autoplay muted playsinline preload="auto" onloadeddata="this.currentTime=2.5;this.pause()" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260603_132049_036591b8-6e92-4760-b94c-a7ea6eef315c.mp4" aria-label="Ambient background video."></video>
     <div class="meld-veil"></div>
     <div class="doc-inner">
