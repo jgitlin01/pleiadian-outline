@@ -27,3 +27,5 @@ dist-ssr
 # Source art (10MB PNGs); shipped versions live in img/*.webp
 Alien-race origin story *.png
 The Gnostic substrate *.png
+.env
+.env*
