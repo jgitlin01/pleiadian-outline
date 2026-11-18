@@ -1,6 +1,6 @@
 // Starts a Stripe Checkout for the Field Guide and sends the buyer there.
 export default async function handler(req, res) {
-  const origin = `https://${req.headers.host}`;
+  const origin = `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}`;
   const body = new URLSearchParams({
     mode: 'payment',
     'line_items[0][quantity]': '1',
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     'line_items[0][price_data][unit_amount]': '3330',
     'line_items[0][price_data][product_data][tax_code]': 'txcd_10302000', // digital book, downloaded
     'line_items[0][price_data][product_data][name]': 'Field Guide to the Pleiadian New Age Movement (digital)',
-    success_url: `${origin}/api/download?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${origin}/read.html?key={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/#obtain`,
   });
   const r = await fetch('https://api.stripe.com/v1/checkout/sessions', {
